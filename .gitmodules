@@ -1,0 +1,14 @@
+[submodule "FlMMLonHTML5"]
+	path = FlMMLonHTML5
+	url = https://github.com/mersenne-sister/FlMMLonHTML5.git
+	branch = develop
+[submodule "Semantic-UI"]
+	path = Semantic-UI
+	url = https://github.com/mersenne-sister/Semantic-UI.git
+	branch = feature/dark-2.1.6
+[submodule "libmp3lame-js"]
+	path = libmp3lame-js
+	url = https://github.com/mersenne-sister/libmp3lame-js.git
+[submodule "dpcm-worker"]
+	path = dpcm-worker
+	url = https://github.com/mersenne-sister/dpcm-worker.git

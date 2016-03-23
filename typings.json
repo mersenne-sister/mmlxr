@@ -1,0 +1,18 @@
+{
+  "dependencies": {},
+  "devDependencies": {},
+  "ambientDependencies": {
+    "ace": "github:DefinitelyTyped/DefinitelyTyped/ace/ace.d.ts#2f7fb157a8482a8efa1a50e724b27bf8736eb379",
+    "es6-promise": "github:DefinitelyTyped/DefinitelyTyped/es6-promise/es6-promise.d.ts#830e8ebd9ef137d039d5c7ede24a421f08595f83",
+    "hammerjs": "github:DefinitelyTyped/DefinitelyTyped/hammerjs/hammerjs.d.ts#74a4dfc1bc2dfadec47b8aae953b28546cb9c6b7",
+    "jquery": "github:DefinitelyTyped/DefinitelyTyped/jquery/jquery.d.ts#cf2a968f0edd7d30773f7d23fe3708fa029d5ab7",
+    "js-cookie": "github:DefinitelyTyped/DefinitelyTyped/js-cookie/js-cookie.d.ts#bb370b898e6a1528c5959932b4e238a574f22869",
+    "jszip": "github:DefinitelyTyped/DefinitelyTyped/jszip/jszip.d.ts#fd23f8f26c8cb903ae0230c9c97af9c8a609a515",
+    "moment": "github:DefinitelyTyped/DefinitelyTyped/moment/moment.d.ts#b090bcf9ba9f756ec8ff53e7707269729172a325",
+    "moment-node": "github:DefinitelyTyped/DefinitelyTyped/moment/moment-node.d.ts#5b0c38ab2bd59980a095c025b11ebb6cc6cbf947",
+    "pubsub": "github:DefinitelyTyped/DefinitelyTyped/pubsubjs/pubsub.d.ts#fc2078411b1765bc5ce000bacde8ff13b31623b3",
+    "sanitize-filename": "github:DefinitelyTyped/DefinitelyTyped/sanitize-filename/sanitize-filename.d.ts#b1ce1cc514dabd8bdbfa9a6c41fedd04af00043b",
+    "sprintf-js": "github:DefinitelyTyped/DefinitelyTyped/sprintf-js/sprintf-js.d.ts#147380f9d1255f779806270d80eea85e2c1af55f",
+    "toastr": "github:DefinitelyTyped/DefinitelyTyped/toastr/toastr.d.ts#a36e6ad2f472741b1c22c2af955bf13b7c62e146"
+  }
+}

@@ -1,0 +1,17 @@
+root = true
+
+[*]
+insert_final_newline = true
+
+[*.ts,*.js,*.jade,*.styl]
+indent_style = tab
+indent_size = 4
+
+[*.json]
+indent_style = space
+indent_size = 2
+
+[*.html,*.yml,*.md]
+end_of_line = lf
+indent_style = space
+indent_size = 4

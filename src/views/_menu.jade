@@ -1,0 +1,85 @@
+#ctrl-toolbar.ui.bottom.attached.menu
+	a#ctrl-play.ui.icon.button.item(data-value='trigger.global.transport.play' data-desc-value='trigger.global.transport.playOrStop' title='Play')
+		i.icon.play
+	a#ctrl-stop.ui.icon.button.item(data-value='trigger.global.transport.stop' data-desc-value='trigger.global.transport.playOrStop' title='Stop' style='display:none')
+		i.icon.stop
+	a#ctrl-pause.ui.disabled.icon.button.item(data-value='trigger.global.transport.pause' title='Pause')
+		i.icon.pause
+	a#ctrl-compile.ui.icon.button.item(data-value='trigger.global.transport.compile' title='Compile')
+		i.icon.refresh
+	.right.menu
+		#ctrl-menu.ui.dropdown.icon.item(title='Open Menu')
+			i.ellipsis.vertical.icon
+			.upward.menu
+				.item
+					i.left.dropdown.icon
+					span.text.L: |Help
+					.left.menu
+						a.item(data-value='trigger.global.help.about')
+							span.text.L: |About
+						a.item(data-value='trigger.global.help.manual')
+							span.text.L: |Manual
+						a.item(data-value='trigger.global.help.editor.keybind')
+							span.text.L: |Editor key bindings
+						a.item(data-value='trigger.global.help.flmml.toc')
+							span.text.L: |FlMML Documentation
+				.divider
+				//- a.item
+				//- 	i.twitter.icon
+				//- 	span.text: |Share on Twitter
+				a.item(data-value='trigger.global.file.import.pikokakiko')
+					i.write.icon
+					span.text.L: |Import an MML from Pikokakiko
+				a.beta.item(data-value='trigger.global.file.import.gist')
+					i.github.icon
+					span.text.L: |Import a File from Gist
+					|&nbsp;
+					label.ui.label: |SECRET
+				a.beta.item(data-value='trigger.global.file.import.dropbox')
+					i.dropbox.icon
+					span.text.L: |Import a File from Dropbox
+					|&nbsp;
+					label.ui.label: |SECRET
+				a.item(onclick='document.getElementById("ctrl-local-file").click()')
+					i.disk.outline.icon
+					span.text.L: |Import a Local File
+					input#ctrl-local-file(type='file' style="display:none" accept=".mml, .flmml, .txt")
+				//- a.item(href='auth/google-drive/oauth')
+				//- 	i.google.icon
+				//- 	span.text: |Open file on Google Drive
+				//- a.item
+				//- 	i.soundcloud.icon
+				//- 	span.text: |Upload to SoundCloud
+				.divider
+				a.item(onclick='document.getElementById("ctrl-wav9-file").click()')
+					i.eyedropper.icon
+					span.text.L: |Insert #WAV9 from .wav/.dmc
+					input#ctrl-wav9-file(type='file' style="display:none" accept=".wav, .dmc")
+				.divider
+				a.item(data-value='trigger.global.file.new')
+					i.file.outline.icon
+					span.text.L: |New File
+				a.item(data-value='trigger.global.file.open.autosave')
+					i.recycle.icon
+					span.text.L: |Open Autosaved MML
+				a.item(data-value='trigger.global.file.toggle.protect')
+					i.lock.icon
+					span.text.L: |Protect at autosaving
+					i.lxr-right.check.icon
+				.divider
+				.item
+					i.left.dropdown.icon
+					span.text.L: |Generate Sound File
+					.left.menu
+						a.item(data-value='trigger.global.generate.wav')
+							i.sound.icon
+							span.text.L: |Generate .wav File
+						a.item(data-value='trigger.global.generate.mp3')
+							i.sound.icon
+							span.text.L: |Generate .mp3 File
+				a.item(data-value='trigger.global.file.backup.autosave')
+					i.download.icon
+					span.text.L: |Backup Autosaves
+				a.item(data-value='trigger.global.file.save.download')
+					i.download.icon
+					span.text.L: |Save a Copy in Download Folder

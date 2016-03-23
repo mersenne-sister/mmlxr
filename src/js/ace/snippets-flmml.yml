@@ -1,0 +1,658 @@
+-
+    caption: 'o = Octave'
+    content: 'o${1:4}'
+    doc:
+        ja: オクターブ指定。0～8まで。
+-
+    caption: '< = Octave Up'
+    content: '<'
+    doc:
+        ja: オクターブを上げます。
+-
+    caption: '> = Octave Down'
+    content: '>'
+    doc:
+        ja: オクターブを下げます。
+-
+    caption: '#OCTAVE REVERSE'
+    content: '#OCTAVE REVERSE'
+    doc:
+        ja: |
+            MMLの先頭にこの記述をすると、オクターブ
+            上げ下げ（不等号）の機能が逆転します。
+-
+    caption: 'ns = Note Shift'
+    content: 'ns${1:0}'
+    doc:
+        ja: |
+            絶対ノートシフト。例えば
+            <code>CDE NS-1 CDE NS-1 CDE</code>
+            と書くと二度目のドレミは半音下がります。
+            三度目も同じ半音さがったドレミです。
+-
+    caption: '@ns = Note Shift (Relative)'
+    content: '@ns${1:0}'
+    doc:
+        ja: |
+            相対ノートシフト。例えば
+            <code>CDE @NS-1 CDE @NS-1 CDE</code>
+            と書くと二度目のドレミは半音、
+            三度目は更に半音下がります。
+-
+    caption: '@d = Detune'
+    content: '@d${1:0}'
+    doc:
+        ja: |
+            デチューン。cent単位でピッチを調整します。
+            プラスマイナスどちらも可能。
+-
+    caption: '@l = LFO'
+    content: '@l${1:\$depth},${2:\$width},${3:\$form},${4:\$delay},${5:\$time},${6:\$dest}'
+    doc:
+        ja: |
+            LFO。depth、width、form、delay、time、destの順。
+            depthは音程を揺らす振幅。単位はcent。
+            widthは１周期の長さ。単位はticks。
+            formは波形。0：サイン波／1:ノコギリ波／2:三角波／3:パルス波。
+                        番号の前にマイナスを付けると上下が反転した波形になる。
+            delayは遅延。発音からこのticks経過後にLFOがスタートする。
+            timeは回数。ここで指定した回数が終わったらLFOなしに戻る。
+            destはLFOで揺らすパラメータ
+                  (0:音程、1:音量、2:フィルタカットオフ周波数、
+                   3:パルス幅、4:FM入力レベル、5:パン)。
+            form、delay、time、destは省略可能。
+-
+    caption: 'l = Length'
+    content: 'l${1:4}'
+    doc:
+        ja: デフォルト音長指定。
+-
+    caption: 'q = Gate Time (Relative)'
+    content: 'q${1:15}'
+    doc:
+        ja: |
+            ゲートタイムの割合の指定。
+            ある音を再生するとき、実際には
+            指定された音長の[n]/16だけが発音され、
+            残りの時間は休符になります。
+-
+    caption: '@q = Gate Time (Absolute)'
+    content: '@q${1:0}'
+    doc:
+        ja: |
+            ゲートタイムの絶対指定。
+            <code>q</code>で指定されたゲートタイムから全音符の
+            x/192の長さを引いたゲートタイムにする。
+-
+    caption: '& = Tie / Slur'
+    content: '&'
+    doc:
+        ja: |
+            タイまたはスラー。
+            <code>C2&amp;C8</code>と書けばタイ、<code>C&amp;D&amp;E</code>と書けばスラー。
+            Rev.38695以降なら、タイは
+            <code>C2&amp;8</code>のような書き方も可能です。
+
+-
+    caption: '{...} = Group Notes'
+    content: '{${1}}'
+    doc:
+        ja: |
+            通常の音長指定では割り切れないような連符
+            (５連符や7連符)を演奏する。
+            {音程データ}音長 と言う感じで指定し、
+            音長分の長さ内に音程データが均等に割り振られます。
+            
+            [例] <code>{CEGEC}2</code> /* 2分音符の長さ内で CEGEC を
+                             均等な長さで演奏します */
+            
+            音長を省略するとデフォルト音長が使用されます。
+            また、あまりにも無茶なデータは正しく
+            演奏しない場合があるのでほどほどに。
+            { }内では <code>*</code> コマンドは使用できません。
+            連符を引数付きマクロの引数に使う場合は
+            <code>" "</code> で括った指定方法で指定してください。
+            
+            <code>$MACRO{ARG} = %ARG;</code>
+            <code>$MACRO{{CDEFG}4} /* NG */</code>
+            <code>$MACRO{"{CDEFG}4"} /* OK */</code>
+            （Rev.38695以降）
+-
+    caption: 'v = Velocity'
+    content: 'v${1:12}'
+    doc:
+        ja: 大まかなベロシティ（音量）指定。0～15まで。
+-
+    caption: '@v = Velocity (Precise)'
+    content: '@v${1:100}'
+    doc:
+        ja: 細かいベロシティ（音量）指定。0～127まで。
+-
+    caption: '( = Velocity Up'
+    content: '('
+    doc:
+        ja: |
+            ベロシティ（音量）を上げます。
+            直前に使った音量コマンドが<code>v</code>か<code>@v</code>かによって
+            変化量が変わります。
+-
+    caption: ') = Velocity Down'
+    content: ')'
+    doc:
+        ja: |
+            ベロシティ（音量）を下げます。
+            直前に使った音量コマンドが<code>v</code>か<code>@v</code>かによって
+            変化量が変わります。
+-
+    caption: '#VELOCITY REVERSE'
+    content: '#VELOCITY REVERSE'
+    doc:
+        ja: |
+            MMLの先頭にこの記述をすると、
+            ベロシティ上げ下げ（括弧）の機能が逆転します。
+-
+    caption: '@x = Expression'
+    content: '@x${1:127}'
+    doc:
+        ja: |
+            エクスプレッションの指定。
+            ベロシティは発音時の音の強さですが、
+            エクスプレッションは音の抑揚をつけるのに使われます。
+            ですから、スラーの途中で変更可能です。0～127まで。
+-
+    caption: 'x = Level Scale'
+    content: 'x${1:0}'
+    doc:
+        ja: |
+            音量モードの指定。
+            0のとき線形の音量指定。
+            1のとき非線形の（音楽的な）音量指定。
+            エンベロープとベロシティに影響します。
+            デフォルトは0。
+-
+    caption: '@p = Panpot'
+    content: '@p${1:64}'
+    doc:
+        ja: |
+            1～127で、音の定位を指定します。
+            小さいほど左、大きいほど右で、デフォルトは64。
+-
+    caption: 't = Tempo'
+    content: 't${1:120}'
+    doc:
+        ja: |
+            BPMによるテンポ指定。
+            小数点以下第二位まで有効です（Rev.38599～）。
+-
+    caption: '; = End of Macro or Track'
+    content: ';'
+    doc:
+        ja: |
+            次のトラックへ移ります。
+            和音を出したいときにはコレを使います。
+-
+    caption: '/:...:/ = Repeat'
+    content: '/:${1:2}:/'
+    doc:
+        ja: |
+            繰り返しの指定。
+            <code>/:</code> から <code>:/</code> の間を[n]回繰り返します。
+            最終ループのときは <code>/</code> でループを抜けます。
+            <code>/</code> は省略可能。[n]省略時は２回繰り返し。
+-
+    caption: '/ = Repeat: Break Last Trip'
+    content: '/'
+    doc:
+        ja: <code>/:</code> … <code>:/</code> の最終ループを抜けます。
+-
+    caption: '/*...*/ = Comment'
+    content: '/*${1}*/'
+    doc:
+        ja: |
+            <code>/*</code> と <code>*/</code> に囲まれた文字列は
+            コメントとして読み飛ばします。(Rev.[650]から実装)
+-
+    caption: '* = Portamento (MML-ish)'
+    content: '*'
+    doc:
+        ja: |
+            MML風ポルタメント(Rev.38695以降)。
+            ノートを * で繋げるとポルタメントになります。
+            
+            [例] <code>C*&lt;C4;</code> /* ドからオクターブ上のドまで４分音符の
+                           長さで滑らかに変化します */
+                 <code>C1&amp;C*&lt;C4&amp;C2.</code> /* ドを全音符分なった後、オクターブ上の
+                                 ドまで４分音符の長さで変化し、
+                                 その後符点２分音符の長さでなります */
+            
+            次のような記述は出来ません。
+            [例] <code>C*&lt;C4*&gt;C4</code> /* この場合はエラーになります */
+            
+            全音符以上の長さで変化をさせたい場合は
+            音長のみのタイで実現できます。
+            [例] <code>C*&lt;C1&amp;1&amp;1&amp;1;</code> /* 全音符４つ分の長さでドからオクターブ上のドまで変化します */
+-
+    caption: '@u0 = Portamento (MIDI-ish): Off'
+    content: '@u0'
+    doc:
+        ja: |
+            MIDIデータ風ポルタメントをOFFにします。
+            MIDIで言う所のCC#65に相当します。
+            （Rev.38695以降）
+-
+    caption: '@u1 = Portamento (MIDI-ish): On'
+    content: '@u1'
+    doc:
+        ja: |
+            MIDIデータ風ポルタメントをONにします。
+            MIDIで言う所のCC#65に相当します。
+            （Rev.38695以降）
+-
+    caption: '@u2 = Portamento (MIDI-ish): Rate'
+    content: '@u2,${1:64}'
+    doc:
+        ja: |
+            MIDIデータ風ポルタメントの音程変化の割合。
+            0が早く、127がゆっくり音程が変化します。
+            MIDIで言う所のCC#5に相当します。
+            （Rev.38695以降）
+-
+    caption: '@u3 = Portamento (MIDI-ish): Offset'
+    content: '@u3,${1:o4c}'
+    doc:
+        ja: |
+            MIDIデータ風ポルタメントの基準の音程。
+            MIDIで言う所のCC#84に相当します。
+            未指定時は直前の音程からの音程変化になります。
+            このコマンドが指定された直後のノートにのみ影響し、
+            その次からはまた直前のノートからとなります。
+            
+            [例] <code>@U3,48</code>   /* ノート番号を指定 */
+                 <code>@U3,O3A-</code> /* ノートを文字として指定 */
+            
+            基準の音程の指定方法は上記の２種類あり、
+            後者で使用可能な文字は <code>O, A～G, -, +, #</code> のみです。
+            相対オクターブ変更等は使用できません。
+-
+    caption: '@0 = Waveform: Sine'
+    content: '@0'
+    doc:
+        ja: VCOの波形（音色）をサイン波に変更します。
+-
+    caption: '@0-1 = Waveform: Sine (Half Rectified)'
+    content: '@0-1'
+    doc:
+        ja: VCOの波形（音色）を半波整流サイン波に変更します。
+-
+    caption: '@0-2 = Waveform: Sine (Full Rectified)'
+    content: '@0-2'
+    doc:
+        ja: VCOの波形（音色）を全波整流サイン波に変更します。
+-
+    caption: '@1 = Waveform: Sawtoooth (Starts at Max)'
+    content: '@1'
+    doc:
+        ja: VCOの波形（音色）をノコギリ波に変更します。
+-
+    caption: '@1-1 = Waveform: Sawtoooth (Starts at Zero)'
+    content: '@1-1'
+    doc:
+        ja: VCOの波形（音色）をノコギリ波（変位0から開始）に変更します。
+-
+    caption: '@2 = Waveform: Triangle (Starts at Max)'
+    content: '@2'
+    doc:
+        ja: VCOの波形（音色）を三角波に変更します。
+-
+    caption: '@2-1 = Waveform: Triangle (Starts at Zero)'
+    content: '@2-1'
+    doc:
+        ja: VCOの波形（音色）を三角波（変位0から開始）に変更します。
+-
+    caption: '@3 = Waveform: Pulse (+Duty)'
+    content: '@3@w${1:50}'
+    doc:
+        ja: |
+            VCOの波形（音色）をパルス波に変更します。
+            <code>@w</code> にデューティ比を <code>0～100</code> で指定します。
+            マイナスの値を指定するとMIXモード
+            （ノイズ混じりの音）になります。
+-
+    caption: '@4 = Waveform: White Noise (+Freq)'
+    content: '@4@n${1:0}'
+    doc:
+        ja: |
+            VCOの波形（音色）をホワイトノイズに変更します。
+            <code>@n</code> にノイズ周波数を <code>0～127</code> で指定します。
+            大きいほど低い感じになります。
+-
+    caption: '@5 = Waveform: FC Pulse (+Duty)'
+    content: '@5@w${1:4}'
+    doc:
+        ja: |
+            VCOの波形（音色）をFCパルス波に変更します。
+            @w にデューティ比を 0～8 で指定します
+            （12.5×n％のパルス波になります）。
+-
+    caption: '@6 = Waveform: FC Tri. (Starts at Max)'
+    content: '@6'
+    doc:
+        ja: VCOの波形（音色）をFC三角波に変更します。
+-
+    caption: '@6-1 = Waveform: FC Tri. (Starts at Zero)'
+    content: '@6-1'
+    doc:
+        ja: VCOの波形（音色）をFC三角波（変位0から開始）に変更します。
+-
+    caption: '@7 = Waveform: FC Noise'
+    content: '@7'
+    doc:
+        ja: |
+            VCOの波形（音色）をFCノイズに変更します。
+            音程によって周波数が変わります。
+            <code>o0c</code> が一番高い周波数で、音程を上げるに従って
+            低周波ノイズになります。
+-
+    caption: '@8 = Waveform: FC Short Noise'
+    content: '@8'
+    doc:
+        ja: |
+            VCOの波形（音色）をFCショートノイズに変更します。
+            音程によって周波数が変わります。
+            <code>o0c</code> が一番高い周波数で、音程を上げるに従って
+            低周波ノイズになります。
+-
+    caption: '@9 = Waveform: FC DPCM'
+    content: '@9-${1:\$id}'
+    doc:
+        ja: |
+            VCOの波形（音色）をFC DPCMに変更します。
+            <code>#WAV9</code> によって音色を定義し、
+            <code>@9-0</code> のようにして音色を選択します。
+            <code>o0c</code> が一番低い周波数で、音程を上げると
+            16段階までの周波数を表現できます。
+-
+    caption: '@10 = Waveform: GB Wave Table'
+    content: '@10-${1:\$id}'
+    doc:
+        ja: |
+            VCOの波形（音色）をGB波形メモリ音源に変更します。
+            <code>#WAV10</code> によって音色を定義し、
+            <code>@10-0</code> のようにして音色を選択します。
+-
+    caption: '@11 = Waveform: GB Noise'
+    content: '@11'
+    doc:
+        ja: |
+            VCOの波形（音色）をGBノイズに変更します。
+            音程によって周波数が変わります。
+            <code>o0c</code> が一番高い周波数で、音程を上げるに従って
+            低周波ノイズになります。
+-
+    caption: '@12 = Waveform: GB Short Noise'
+    content: '@12'
+    doc:
+        ja: |
+            VCOの波形（音色）をGBショートノイズに変更します。
+            音程によって周波数が変わります。
+            <code>o0c</code> が一番高い周波数で、音程を上げるに従って
+            低周波ノイズになります。
+-
+    caption: '@13 = Waveform: Wave Table'
+    content: '@13-${1:\$id}'
+    doc:
+        ja: |
+            VCOの波形（音色）を波形メモリ音源に変更します。
+            <code>#WAV13</code> によって音色を定義し、
+            <code>@13-0</code> のようにして音色を選択します。
+-
+    caption: '@14 = Waveform: FM Synth'
+    content: '@14-${1:\$id}'
+    doc:
+        ja: <a href="http://flmml.codeplex.com/wikipage?title=%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%ABFM&referringTitle=Documentation">公式ドキュメントをお読みください。</a>
+-
+    caption: '@mh = FM Synth LFO'
+    content: '@mh${1:\$wf},${2:\$lfrq},${3:\$pmd},${4:\$amd},${5:\$pms},${6:\$ams},${7:\$sync}'
+-
+    caption: '@w = Pulse Duty'
+    content: '@w${1:50}'
+-
+    caption: '@w = Pulse Duty (Mix Mode)'
+    content: '@w-${1:50}'
+    doc:
+        ja: |
+            @3パルス波を選択しているときのパルス幅（デューティ比）を
+            パーセントで指定します。0～100でデフォルトは50。
+            @5のFCパルス波を選択しているときは
+            12.5×n％のパルス波になります。
+            @3のときマイナス指定をすると
+            MIXモード（ノイズ混じりの音）になります。
+-
+    caption: '@n = Noise Frequency'
+    content: '@n${1:0}'
+    doc:
+        ja: |
+            @4ノイズ、または@3MIXモード時のノイズ周波数設定。
+            0～127で、大きいほど低い感じになります。
+-
+    caption: '@f = Filter'
+    content: '@f${1:\$switch},${2:\$amount},${3:\$frequency},${4:\$resonance}'
+    doc:
+        ja: |
+            フィルタ。switch、amount、frequency、resonanceの順。
+            switchは 0のときフィルタなし /
+             1のとき荒いLPF /  2のとき高品質LPF
+            -1のとき荒いHPF / -2のとき高品質HPF。
+            amountは-127～127でフィルターエンベロープの影響度を設定します。
+            frequencyは0～127で基準になるカットオフ周波数を設定します。
+            resonanceは0～127でレゾナンス量を設定します。
+            127のときは発振します。<code>@E2</code> のエンベロープが影響します。
+-
+    caption: '@e1 = Envelope: Amplitude'
+    content: '@e1,${1:\$attack},${2:\$decay},${3:\$sustain},${4:\$release}'
+    doc:
+        ja: |
+            VCA（音量）のエンベロープ設定。
+            attack、decay、sustain、releaseの順に指定します。
+            attack, decay, releaseは127イコール１秒。
+            sustainは0～127の間で指定します。
+            また、decayとsustainのペアを複数続けて書くことで
+            エンベロープの制御点を増やすことができます。
+-
+    caption: '@e2 = Envelope: Filter'
+    content: '@e2,${1:\$attack},${2:\$decay},${3:\$sustain},${4:\$release}'
+    doc:
+        ja: |
+            VCF（フィルタ）のエンベロープの設定。
+            attack、decay、sustain、releaseの順に指定します。
+            attack, decay, releaseは127イコール１秒。
+            sustainは0～127の間で指定します。
+            また、decayとsustainのペアを複数続けて書くことで
+            エンベロープの制御点を増やすことができます。
+-
+    caption: "@'a' = Formant Filter: 'A'"
+    content: "@'a'"
+    doc:
+        ja: |
+            フォルマント・フィルタ。人の声が持つ特徴的な倍音を
+            強調することで声のように聞かせます。
+            <code>@'A'</code> は「あ」
+            <code>@'I'</code> は「い」
+            <code>@'U'</code> は「う」
+            <code>@'E'</code> は「え」
+            <code>@'O'</code> は「お」。
+            <code>@''</code> で機能オフ。
+-
+    caption: "@'i' = Formant Filter: 'I'"
+    content: "@'i'"
+    doc:     "@'a' = Formant Filter: 'A'"
+-
+    caption: "@'u' = Formant Filter: 'U'"
+    content: "@'u'"
+    doc:     "@'a' = Formant Filter: 'A'"
+-
+    caption: "@'e' = Formant Filter: 'E'"
+    content: "@'e'"
+    doc:     "@'a' = Formant Filter: 'A'"
+-
+    caption: "@'o' = Formant Filter: 'O'"
+    content: "@'o'"
+    doc:     "@'a' = Formant Filter: 'A'"
+-
+    caption: "@'' = Formant Filter: Off"
+    content: "@''"
+    doc:     "@'a' = Formant Filter: 'A'"
+-
+    caption: '@o = Track Modulation: Output'
+    content: '@o${1:\$mode},${2:\$pipeID}'
+    doc:
+        ja: |
+            FM変調のためのパイプへの出力。
+            一つ目の数値が0ならOFF。1なら上書き、2なら加算モード。
+            二つ目の数字は出力するパイプの番号（0～3）。
+            詳しくは<a href="http://sketch.txt-nifty.com/blog/2008/11/flmml---fmfm-ec.html">こちらの記事</a>を。
+-
+    caption: '@i = Track Modulation: FM Input'
+    content: '@i${1:\$mode},${2:\$pipeID}'
+    doc:
+        ja: |
+            FM変調のためのパイプからの入力。
+            一つ目の数値が0ならOFF。1～8なら変調の感度を指定します。
+            二つ目の数字は入力するパイプの番号（0～3）。
+            詳しくは<a href="http://sketch.txt-nifty.com/blog/2008/11/flmml---fmfm-ec.html">こちらの記事</a>を。
+-
+    caption: '@r = Track Modulation: Ring Input'
+    content: '@r${1:\$mode},${2:\$pipeID}'
+    doc:
+        ja: |
+            パイプ中の音声とのリングモジュレーション。
+            一つ目の数値がモジュレーションの感度、0ならオフ。
+            1～8ならモジュレーションの感度を指定します。
+            4のときが通常のリングモジュレーション相当。
+            二つ目の数値はモジュレーションに使用するパイプの番号（0～3）。
+-
+    caption: '@s = Track Modulation: Oscilator Sync'
+    content: '@s${1:\$mode},${2:\$pipeID}'
+    doc:
+        ja: |
+            オシレータシンク。一つ目の数値が0ならOFF。
+            1なら同期信号用パイプへ同期信号を出力（そのトラックの音声出力には影響なし）。
+            2ならオシレータを同期信号用パイプの信号に同期させる。
+            二つ目の数値は出力先・入力元とする同期信号用パイプ番号（0～3）。
+-
+    caption: '#WAV9 = FC DPCM Wave Data'
+    content: '#WAV9 ${1:\$id},${2:\$offset},${3:\$loop},${4:\$data}'
+    doc:
+        ja: |
+            FC DPCM音源のサンプルデータ定義。
+            詳しくは<a href="http://sketch.txt-nifty.com/blog/2009/05/flmml---dpcm-2b.html">こちらの記事</a>を。
+-
+    caption: '#WAV10 = GB Wave Table Data'
+    content: '#WAV10 ${1:\$id},${2:\$data}'
+    doc:
+        ja: |
+            GB波形メモリ音源のサンプルデータ定義。
+            詳しくは<a href="http://sketch.txt-nifty.com/blog/2009/02/flmml---gb-8b0f.html">こちらの記事</a>を。
+-
+    caption: '#WAV13 = Wave Table Data'
+    content: '#WAV13 ${1:\$id},${2:\$data}'
+    doc:
+        ja: |
+            波形メモリ音源(@13)の音色テーブル定義。
+            最初の数値で音色番号、そのあとに続くデータは
+            波形データを16進数2桁で1サンプルを表すサンプル列
+            (最大1024サンプル)です。
+-
+    caption: '#OPM = FM Synth Tone Data'
+    content: |
+        #OPM@${1:\$id} {
+            AL FB
+            AR DR SR RR SL TL KS ML DT1 DT2 AME /* Op.1 */
+            AR DR SR RR SL TL KS ML DT1 DT2 AME /* Op.2 */
+            AR DR SR RR SL TL KS ML DT1 DT2 AME /* Op.3 */
+            AR DR SR RR SL TL KS ML DT1 DT2 AME /* Op.4 */
+            /*
+            OM
+            WF LFRQ PMD AMD
+            PMS AMS
+            NE NFRQ
+            */
+        }
+    doc:
+        ja: <a href="http://flmml.codeplex.com/wikipage?title=%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%ABFM&referringTitle=Documentation">公式ドキュメントをお読みください。</a>
+-
+    caption: '#USING POLY'
+    content: '#USING POLY ${1:1}'
+    doc:
+        ja: |
+            ポリフォニックモード(以降 POLY)を有効にします。
+            この宣言がなければ、FlMMLは以前と同じ挙動をします。
+            ＃ ポリフォニックモードとは
+            ＃ １つのトラックあたり複数の音を同時に鳴らすことが出来ます。
+            ＃ 後述の和音記法を用いて1トラックで和音を奏でることが可能です。
+            ＃ 長いリリースの音でも途切れずに再生が可能です。
+            
+            スペースを空けて最大発音数(以降 POLYMAX)を記述します。
+            その後にスペースを空けて"force"と記述すると強制的にすべてのトラックにPOLYを設定します。
+            
+            FMには向いてないので、FMトラックにはPOLYを適用しないように。
+-
+    caption: '#USING POLY (force)'
+    content: '#USING POLY ${1:1} force'
+    doc:     '#USING POLY'
+-
+    caption: '@pl = Polyphonic Mode'
+    content: '@pl${1:1}'
+    doc:
+        ja: |
+            このコマンド以降、現在のトラックに対してPOLYを有効にします。
+            
+            続けて最大発音数を記述します。
+            POLYMAXでリミットされます。
+            省略時はPOLYMAXが適用されます。
+            
+            "#USING POLY"が宣言されていない場合、"@pl"は無視されます。
+            "#USING POLY"が宣言されていても、"@pl"がない場合MONOモード(以前のFlMML)のままですが
+            "#USING POLY force"が宣言されている場合はこの限りではありません。
+-
+    caption: '[...] = Polyphonic Notes'
+    content: '[${1}]'
+    doc:
+        ja: |
+            和音記法。
+            []で音符を括れば同時に鳴らすことが出来ます。
+            Rでカッコ内での発音位置をずらすことが出来ます。
+            #USING POLY宣言必須
+            使用トラックで@pl必須
+            
+            機能制限
+            　　スラー使用不可。（使用した場合の動作は未定義）
+            　　連符記述は使用しても意味を成さない。
+            　　（分割された音符が同時に発声します。）
+            　　パイプ処理非推奨。
+            詳しくは<a href="http://coderepos.org/share/wiki/poly_chord">こちらの記事</a>を。
+-
+    caption: '#TITLE'
+    content: '#TITLE ${1:title}'
+    doc:
+        ja: 曲のタイトルを記述します。
+-
+    caption: '#ARTIST'
+    content: '#ARTIST ${1:artist}'
+    doc:
+        ja: 歌手・作曲者・編曲者などを記述します。
+-
+    caption: '#COMMENT'
+    content: '#COMMENT ${1:comment}'
+    doc:
+        ja: コメントを記述します。
+-
+    caption: '#CODING'
+    content: '#CODING ${1:coding}'
+    doc:
+        ja: MML作成者の名前を記述します。
+-
+    caption: '#PRAGMA'
+    content: '#PRAGMA ${1:pragma}'
+    doc:
+        ja: 外部ツールが使用するタグです。FlMMLでは当該行を無視します

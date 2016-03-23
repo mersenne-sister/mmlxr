@@ -1,0 +1,87 @@
+'Help':                                 ヘルプ
+'Manual':                               マニュアル
+'FlMML Documentation':                  FlMML ドキュメント
+'Editor key bindings':                  エディタのキーバインド
+'About':                                MMLxrについて
+'Import an MML from Pikokakiko':        ピコカキコからインポート
+'Import a File from Gist':              Gistからインポート
+'Import a File from Dropbox':           Dropboxからインポート
+'Import a Local File':                  ローカルファイルをインポート
+'Insert #WAV9 from .wav/.dmc':          '.wav/.dmcから#WAV9を挿入'
+'New File':                             新規ファイル
+'Open Autosaved MML':                   オートセーブを開く
+'Save a Copy in Download Folder':       複製をダウンロード
+'Backup Autosaves':                     オートセーブをバックアップ
+'Generate Sound File':                  音声ファイルを生成
+'Generate .wav File':                   .wavを生成
+'Generate .mp3 File':                   .mp3を生成
+'Protect at autosaving':                オートセーブ時にプロテクト
+
+'Confirm':                              確認
+'Discard':                              破棄
+'Delete':                               削除
+'Open':                                 開く
+'Import':                               インポート
+'Cancel':                               キャンセル
+'Ignore':                               無視
+'Protect':                              プロテクト
+'Leave':                                そのまま
+'File Name':                            ファイル名
+'Updated At':                           更新日時
+'Title':                                タイトル
+'MML Author':                           MML記入者
+'Title/Preview':                        タイトル/プレビュー
+'Slot ID':                              スロットID
+
+'Generating Wave Data':                 音声データを生成中
+'Encoding':                             エンコード中
+'Complete':                             完了
+'Caution':                              注意
+
+'Failed to authenticate':               認証に失敗しました。
+'Failed to import MML':                 MMLのインポートに失敗しました。
+'Failed to export MML':                 MMLのエクスポートに失敗しました。
+'Failed to load the file':              ファイルの読み込みに失敗しました。
+'Import succeeded':                     インポートに成功しました。
+'Import failed':                        インポートに失敗しました。
+'Export succeeded':                     エクスポートに成功しました。
+'Convert failed':                       変換に失敗しました。
+'Autosave loaded':                      オートセーブを読み込みました。
+'No autosave stored':                   オートセーブに保存されているMMLはありません。
+'Autosave protection is enabled.':      プロテクトが有効化されました。
+'Autosave protection is disabled.':     プロテクトが解除されました。
+'Are you sure to unprotect this item?': プロテクトを解除しますか？
+'Are you sure to delete this item?':    このMMLを削除しますか？
+'The item in slot %s was successfully removed.': スロット %s のMMLは削除されました。
+'Processing aborted forcibly':          強制的に処理を中断しました。
+'The MML contains errors.':             MMLにエラーがあります。
+'Computing resource seems to be not enough.': コンピュータの処理能力が不足している場合があります。
+'#USING POLY for FM Synth is not recommended.': '#USING POLY のFM音源への使用は非推奨です。'
+'Total play time might be too long.':   再生時間が長すぎる恐れがあります。
+'Trace positions may be now incorrect since your MML has been edited.': MMLが編集済みのため、トレース位置は不正確です。
+'Your current MML is autosaved but not protected.': 現在のMMLはオートセーブされますが、プロテクトされていません。
+'Please select "Protect at autosaving" from the Menu to protect your current MML.': 現在のMMLをプロテクトするには、メニューから「オートセーブ時にプロテクト」を選択してください。
+'Unprotected MMLs are kept upto %s and the others will be removed from older ones.': プロテクトされていないMMLは%s件まで保持され、残りは古いものから削除されます。
+'Please "Backup Autosaves" from menu on a regular basis.': メニューから「オートセーブをバックアップ」を定期的に行ってください。
+'All PROTECTED files are included in the backed up archive. Please validate the contents just to be sure.': プロテクトされたファイルのみがアーカイブに含まれます。念のため内容をご確認ください。
+'Could not connect to the database. Check if there are the other tabs or windows opening this page.': データベースに接続できません。このページを開いている他のタブやウィンドウがないかを確認してください。
+'This MML might be in use by another tab or window. Do you open this anyway?': このMMLは他のタブやウィンドウで使用中の可能性があります。それでも開きますか？
+'Invalid token was found. The operation was aborted.': トークンが無効です。操作は中断されました。
+
+'Contact me for questions and suggestions via': 質問・提案はこちらまで：
+'This application uses the following third-party technologies.': 本アプリケーションは以下のライブラリ等を利用しています。
+'Input the URL or player tag in one of the following format': 以下のいずれかのフォーマットでURLや再生用タグを入力してください
+'An integer number':                    整数
+'Related links':                        関連リンク
+'Pikokakiko genre list (Japanese)':     ピコカキコ ジャンル一覧
+'This MML is imported from Pikokakiko #%s': このMMLはピコカキコ(ID=%s)からインポートされました。
+'Loop variable detected':               ループ変数が検出されました
+'The variable %s = %s seems to be used as the loop count. Do you want to override the smaller value in order to reduce the compile time?': 変数 %s = %s はループ回数として使用されているようです。コンパイル時間を短縮するために小さな値で上書きしますか？
+'Set to 1':                             1に設定
+'The inserted wave data can be used as %s.': '挿入された波形データは %s として使用できます。'
+'The generated data length is over the limit of DPCM.': '生成されるデータの長さがDPCMの制限を超えています。'
+'Unsupported format':                   非対応のフォーマットです
+'Please select a file with .wav or .dmc extension.': 拡張子が .wav または .dmc のファイルを選択してください。
+
+'%s %s':                                '%s%s'
+"%s\n%s":                               "%s\n%s"

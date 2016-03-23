@@ -1,0 +1,97 @@
+#region
+	width 100%
+	height 100%
+
+	#region-pianoroll
+	
+		#region-pianoroll-main
+			@extends .flx-col
+			.pianoroll
+				flex 1 1 0
+		
+	#region-editor
+		
+		#region-editor-main
+			@extends .flx-col
+			#editor-mml
+				flex 1 1 0
+		
+		#region-editor-info
+			
+			#region-tab-container
+				& > .menu
+					margin-bottom 4px
+
+			#transport-volume-container
+				@extends .flx-row
+				padding 12px 1em
+				#transport-volume-icon
+					color $accent-color
+					flex 0 0 1.5em
+					font-size 22px
+					line-height 20px
+					text-align left
+				#ctrl-volume
+					flex 1 1 0
+				#transport-volume-display
+					font-family $font-monospace
+					flex 0 0 2.5em
+					font-size 1rem
+					line-height 18px
+					text-align right
+
+#transport-time, #file-info
+	position absolute
+	margin 2rem 16px 0
+	right 0
+	top 0
+	font-family $font-monospace
+	font-size 1rem
+	color #fff
+	z-index 99
+#file-info
+	top 1.25em
+	&:not(.protected)
+		color palette('Red', '500')
+
+#region-pianoroll-track
+	padding 0.67em
+	.track-row
+		@extends .flx-row
+		button.ui.button
+			margin 0 1px 1px 0
+			// padding .5em 1em
+			&:first-child
+				width 5em
+				&:before
+					content "Track"
+
+// #region-pianoroll-note
+
+// #region-pianoroll-error
+
+#initial-loader
+	position fixed
+	display block
+	z-index 999
+	left 0
+	top 0
+	width 100%
+	height 100%
+	background rgba(0, 0, 0, 0.75)
+	transition all 1s
+	opacity 1.0
+	text-align center
+	margin 0
+	
+	&.unsupported
+		padding-top calc(50vh - 109px)
+	
+	&:not(.unsupported)
+		padding-top calc(50vh - 84.5px)
+		.unsupported-text
+			display none
+	
+	.splash
+		transition all 0.5s
+		opacity 0.0

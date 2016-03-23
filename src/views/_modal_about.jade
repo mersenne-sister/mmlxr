@@ -1,0 +1,217 @@
+p
+	span.L: |Contact me for questions and suggestions via
+	|&nbsp;
+	a(href='https://twitter.com/bucchigiri' target='_blank')
+		i.fitted.twitter.icon
+		|@bucchigiri
+p
+	span.L: |This application uses the following third-party technologies.
+	mixin licensed(href, name, license)
+		a(href=href target='_blank')= name
+		|&nbsp;licensed under&nbsp;
+		span= license
+	mixin wrap_pre(text)
+		!= text.replace(/&/, '&amp;').replace(/</, '&lt;').replace(/>/, '&gt;').replace(/\n/, '<br/>').replace(' ', '&nbsp;')
+	mixin license_link(href)
+		a(href=href _target='_blank')= href
+
+	h3: |Client Side
+	.ui.accordion
+
+		.title
+			i.dropdown.icon
+			+licensed('https://github.com/carborane3/FlMMLonHTML5', 'FlMMLonHTML5', 'New BSD License')
+		.content
+			+wrap_pre(licenses.FlMMLonHTML5)
+
+		.title
+			i.dropdown.icon
+			|FlMMLonHTML5 is derived from&nbsp;
+			+licensed('http://flmml.codeplex.com/', 'FlMML', 'New BSD License')
+		.content
+			+license_link('http://flmml.codeplex.com/license')
+
+		.title
+			i.dropdown.icon
+			|Built-in DPCM converter is based on&nbsp;
+			+licensed('https://github.com/gocha/DPCMConverter', 'DPCMConverter (Fixed version by gocha)', 'MIT License')
+			|&nbsp;(The original version is developed by&nbsp;
+			a(href='http://dic.nicovideo.jp/u/934152#h2-5' target='_blank'): |arche
+			|)
+		.content
+			+license_link('https://github.com/gocha/DPCMConverter/blob/master/LICENSE')
+
+		.title
+			i.dropdown.icon
+			+licensed('https://github.com/mohayonao/wav-encoder', 'wav-encoder', 'MIT License')
+		.content
+			+license_link('https://opensource.org/licenses/MIT')
+
+		.title
+			i.dropdown.icon
+			+licensed('https://github.com/thlorenz/brace', 'brace', 'MIT License')
+		.content
+			+wrap_pre(licenses.brace)
+
+		.title
+			i.dropdown.icon
+			|brace is derived from&nbsp;
+			+licensed('https://ace.c9.io/', 'Ace (Ajax.org Cloud9 Editor)', 'New BSD License')
+		.content
+			+license_link('https://github.com/ajaxorg/ace/blob/master/LICENSE')
+
+		.title
+			i.dropdown.icon
+			+licensed('https://github.com/kobigurk/libmp3lame-js', 'libmp3lame-js', 'LGPL')
+		.content
+			+license_link('http://lame.sourceforge.net/license.txt')
+
+		.title
+			i.dropdown.icon
+			|libmp3-js is derived from&nbsp;
+			+licensed('http://lame.sourceforge.net/', 'libmp3lame', 'LGPL')
+		.content
+			+license_link('http://lame.sourceforge.net/license.txt')
+
+		.title
+			i.dropdown.icon
+			+licensed('https://jquery.org/', 'jQuery', 'MIT License')
+		.content
+			+wrap_pre(licenses.jquery)
+
+		.title
+			i.dropdown.icon
+			+licensed('http://semantic-ui.com/', 'Semantic UI', 'MIT License')
+		.content
+			include:marked ../../Semantic-UI/LICENSE.md
+
+		.title
+			i.dropdown.icon
+			|Semantic UI includes&nbsp;
+			+licensed('http://fontawesome.io/', 'Font Awesome', 'SIL OFL 1.1')
+		.content
+			+license_link('https://fortawesome.github.io/Font-Awesome/license/')
+
+		.title
+			i.dropdown.icon
+			|Subset of&nbsp; 
+			+licensed('https://www.google.com/get/noto/#sans-jpan', 'Noto Sans CJK JP', 'OFL 1.1')
+		.content
+			+license_link('https://github.com/googlei18n/noto-fonts/blob/0e2067749fa97e3818059d8f58b9cc3b5a770ff2/NEWS')
+
+		.title
+			i.dropdown.icon
+			+licensed('https://github.com/CodeSeven/toastr', 'toastr', 'MIT License')
+		.content
+			+license_link('https://opensource.org/licenses/MIT')
+
+		.title
+			i.dropdown.icon
+			+licensed('http://hammerjs.github.io/', 'Hammer.js', 'MIT License')
+		.content
+			include:marked ../../node_modules/hammerjs/LICENSE.md
+
+		.title
+			i.dropdown.icon
+			+licensed('http://momentjs.com/', 'Moment.js', 'MIT License')
+		.content
+			+wrap_pre(licenses.moment)
+
+		.title
+			i.dropdown.icon
+			+licensed('https://github.com/infusion/Fraction.js', 'fraction.js', 'MIT License')
+		.content
+			+license_link('https://opensource.org/licenses/MIT')
+
+		.title
+			i.dropdown.icon
+			+licensed('https://github.com/louischatriot/node-binary-search-tree', 'Binary search trees for Node.js', 'MIT License')
+		.content
+			+license_link('https://github.com/louischatriot/node-binary-search-tree#license')
+
+		.title
+			i.dropdown.icon
+			+licensed('https://stuk.github.io/jszip/', 'JSZip', 'MIT License')
+		.content
+			include:marked ../../node_modules/jszip/LICENSE.markdown
+
+		.title
+			i.dropdown.icon
+			+licensed('https://github.com/philschatz/octokat.js/', 'octokat.js', 'MIT License')
+		.content
+			include:marked ../../node_modules/octokat/LICENSE.md
+
+		.title
+			i.dropdown.icon
+			+licensed('https://github.com/mroderick/PubSubJS', 'PubSubJS', 'MIT License')
+		.content
+			+license_link('http://mrgnrdrck.mit-license.org/')
+
+		.title
+			i.dropdown.icon
+			+licensed('https://github.com/jaz303/hotkeys', 'hotkeys', 'ISC License')
+		.content
+			+license_link('https://opensource.org/licenses/ISC')
+
+	h3: |Server Side and Development Environment
+	.ui.accordion
+
+		.title
+			i.dropdown.icon
+			+licensed('http://expressjs.com/', 'Express', 'MIT License')
+		.content
+			+wrap_pre(licenses.express)
+
+		.title
+			i.dropdown.icon
+			+licensed('http://jade-lang.com/', 'Jade', 'MIT License')
+		.content
+			+wrap_pre(licenses.jade)
+
+		.title
+			i.dropdown.icon
+			+licensed('http://stylus-lang.com/', 'Stylus', 'MIT License')
+		.content
+			+wrap_pre(licenses.stylus)
+
+		.title
+			i.dropdown.icon
+			+licensed('http://www.typescriptlang.org/', 'TypeScript', 'Apache License')
+		.content
+			+wrap_pre(licenses.typescript)
+
+		.title
+			i.dropdown.icon
+			+licensed('https://webpack.github.io/', 'webpack', 'MIT License')
+		.content
+			+wrap_pre(licenses.webpack)
+
+		.title
+			i.dropdown.icon
+			+licensed('http://browserify.org/', 'browserify', 'MIT License')
+		.content
+			+license_link('https://github.com/substack/node-browserify/blob/master/LICENSE')
+
+		.title
+			i.dropdown.icon
+			+licensed('http://gulpjs.com/', 'gulp', 'MIT License')
+		.content
+			+wrap_pre(licenses.gulp)
+
+		.title
+			i.dropdown.icon
+			+licensed('https://github.com/cheeriojs/cheerio', 'cheerio', 'MIT License')
+		.content
+			+license_link('https://opensource.org/licenses/MIT')
+
+		.title
+			i.dropdown.icon
+			+licensed('https://github.com/mikedeboer/node-github', 'node-github', 'MIT License')
+		.content
+			+wrap_pre(licenses.github)
+
+		.title
+			i.dropdown.icon
+			+licensed('https://github.com/danlevan/google-material-color', 'google-material-color', 'MIT License')
+		.content
+			+wrap_pre(licenses.googleMaterialColor)

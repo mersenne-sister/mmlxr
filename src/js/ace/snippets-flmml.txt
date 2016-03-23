@@ -1,0 +1,10 @@
+ace.define("ace/snippets/flmml",["require","exports","module"], function(acequire, exports, module) {
+"use strict";
+
+// Example: https://raw.githubusercontent.com/ajaxorg/ace/36e6744a5f40df0da52ff22b3bc729657c056e09/lib/ace/snippets/html.snippets
+
+exports.snippetText = '<SNIPPET>';
+exports.docHTML = '<DOCHTML>';
+exports.scope = "flmml";
+
+});

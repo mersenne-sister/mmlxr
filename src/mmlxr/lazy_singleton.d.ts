@@ -1,0 +1,3 @@
+interface LazySingleton {
+	ready: boolean;
+}
