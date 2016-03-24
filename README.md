@@ -20,24 +20,23 @@ npm start
 - Track Tab
     - Display current waveform on realtime
 - File
-    - **Wait DB creation by Promise**
-    - **"Unprotect" and "Remove" buttons on "Open Autosave" modal**
-    - Abort importing if the file seems to be non-MML or too large
+    - **Fix bug about opening MMLs in another tab forcibly**
+    - Abort importing if the file seems to be in unexpected format or too large
 - Editor
+    - **Autocompletion works case sensitive**
     - Size limit alert
 - Piano Roll
+    - **Minimize grid image and implement suedo-scroll**s
     - Warn if event density too high
 - Misc.
-    - **Refine keybindings**
-    - **Do not use exception to cancel Modals**
+    - iOS player support
+    - **Kill worker if it does not answer to COM_STOP**
     - Abort compiling
         - if too many events created
         - if too many warnings occured
         - by pressing stop button
     - Check browser compatibility
         - Alert about that appendChild works too slow
-    - **Alert about private browse mode**
-- **Check the license of libraries again**
 
 ## In the next version
 
@@ -62,7 +61,6 @@ npm start
         - Overwrite the Gist file (with frequency alert)
         - Authenticate Gist in popup window
         - Extension (.mml/.flmml) filter on Gist file selector
-    - Alert if localStorage quota exceeded (10MB/domain @ Chrome)
 - Editor
     - Alert if MML too long
     - Jump to the macro definition
