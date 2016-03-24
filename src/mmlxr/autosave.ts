@@ -577,9 +577,10 @@ export class AutosaveStatic implements LazySingleton {
 			$modal
 				.modal({
 					onHide: ()=>{
-						if (reject) reject(null);
+						if (reject) reject('cancel');
 					},
 					onApprove: ()=>{
+						console.log('onApprove');
 						if (selectedEntry.id == this.autosaveId) {
 							return false; // Prevent modal closing
 						}
@@ -587,6 +588,8 @@ export class AutosaveStatic implements LazySingleton {
 							resolve(selectedEntry);
 							return;
 						}
+						var reject_ = reject;
+						reject = null;
 						UI.confirm(
 							L('Confirm'),
 							L('This MML might be in use by another tab or window. Do you open this anyway?'),
@@ -595,12 +598,20 @@ export class AutosaveStatic implements LazySingleton {
 							true
 						)
 							.then(ok=>{
+								console.log(selectedEntry, resolve, reject);
 								reject = null;
 								resolve(selectedEntry);
 								$modal.modal('hide');
 							})
 							.catch(error=>{
-								if (error=='cancel') console.log('Canceled'); else throw error;
+								console.log('caught', error);
+								if (error=='cancel') {
+									console.log('Canceled');
+									reject_('cancel');
+								}
+								else {
+									throw error;
+								}
 							});
 					}
 				})

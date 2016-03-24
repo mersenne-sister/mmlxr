@@ -20,7 +20,6 @@ npm start
 - Track Tab
     - Display current waveform on realtime
 - File
-    - **Fix bug about opening MMLs in another tab forcibly**
     - Abort importing if the file seems to be in unexpected format or too large
 - Editor
     - **Autocompletion works case sensitive**
