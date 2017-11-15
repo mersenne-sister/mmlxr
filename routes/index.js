@@ -18,7 +18,6 @@ var vars = {
 		brace              : 'node_modules/brace/LICENSE',
 		express            : 'node_modules/express/LICENSE',
 		FlMMLonHTML5       : 'FlMMLonHTML5/LICENSE',
-		github             : 'node_modules/github/LICENSE',
 		googleMaterialColor: 'node_modules/google-material-color/LICENSE',
 		gulp               : 'node_modules/gulp/LICENSE',
 		jade               : 'node_modules/jade/LICENSE',

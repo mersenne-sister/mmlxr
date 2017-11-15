@@ -1,5 +1,3 @@
-/// <reference path="../../typings/browser.d.ts" />
-
 export class NdxdbConnection {
 	
 	private db: IDBDatabase;
@@ -40,7 +38,7 @@ export class NdxdbConnection {
 		});
 	}
 	
-	tx(store: string, mode: string='readwrite') {
+	tx(store: string, mode: IDBTransactionMode='readwrite') {
 		return this.open()
 			.then(()=>{
 				var tx = this.db.transaction([store], mode);

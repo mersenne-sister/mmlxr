@@ -1,5 +1,3 @@
-/// <reference path="../../typings/browser.d.ts" />
-
 interface JQuery {
 	accordion: any;
 	dimmer: any;

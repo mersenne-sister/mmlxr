@@ -1,6 +1,4 @@
-/// <reference path="../../typings/browser.d.ts" />
 /// <reference path="../vendor/dropbox.d.ts" />
-/// <reference path="../vendor/octokat.d.ts" />
 /// <reference path="interfaces.d.ts" />
 /// <reference path="lazy_singleton.d.ts" />
 

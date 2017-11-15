@@ -1,4 +1,3 @@
-/// <reference path="../../typings/browser.d.ts" />
 /// <reference path="lazy_singleton.d.ts" />
 
 import {App} from './app';
@@ -39,7 +38,7 @@ export class MixerStatic implements LazySingleton {
 	}
 
 	get masterVolume(): number {
-		return parseInt($('#ctrl-volume').val());
+		return parseInt(<string>$('#ctrl-volume').val());
 	}
 	set masterVolume(vol: number) {
 		this.updateVolumeControl(vol, true);

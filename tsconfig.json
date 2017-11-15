@@ -15,7 +15,6 @@
     "./src/mmlxr/consts.ts",
     "./src/mmlxr/error_tab.ts",
     "./src/mmlxr/file_manager.ts",
-    "./src/mmlxr/gist.ts",
     "./src/mmlxr/help.ts",
     "./src/mmlxr/index.ts",
     "./src/mmlxr/keyboard.ts",

@@ -56,10 +56,7 @@ npm start
     - Sync with Dropbox
     - Export WAV/MP3 to SoundCloud
     - Download all MMLs on the browser storage as a .zip file
-    - Save as a Gist file
-        - Overwrite the Gist file (with frequency alert)
-        - Authenticate Gist in popup window
-        - Extension (.mml/.flmml) filter on Gist file selector
+    - Alert if localStorage quota exceeded (10MB/domain @ Chrome)
 - Editor
     - Alert if MML too long
     - Jump to the macro definition

@@ -73,7 +73,7 @@ export function registerSubscribers(cmdDefs): void {
 	});
 }
 
-export function delayOnce(ms: number, fn: ()=>void): number {
+export function delayOnce(ms: number, fn: ()=>void): NodeJS.Timer {
 	if (fn['__timeout']) clearTimeout(fn['__timeout']);
 	return fn['__timeout'] = setTimeout(()=>{
 		fn['__timeout'] = null;
@@ -133,13 +133,13 @@ $.fn.forceIntegerInput = function(min: number|Function, max: number|Function) {
 	return this
 		.on('input', function(){
 			var $e = $(this);
-			$e.val($e.val().replace(/\D+/g, ''));
+			$e.val((<string>$e.val()).replace(/\D+/g, ''));
 		})
 		.on('change', function(){
 			var $e = $(this);
 			var min_ = $.isFunction(min) ? (<()=>number>min)() : <number>min;
 			var max_ = $.isFunction(max) ? (<()=>number>max)() : <number>max;
-			var v = parseInt($e.val().replace(/\D+/g, ''));
+			var v = parseInt((<string>$e.val()).replace(/\D+/g, ''));
 			v = Math.max(min_, Math.min(v, max_));
 			$e.val(v);
 		});

@@ -90,7 +90,6 @@ app.use(express.static(P('build')));
 if (config.enableDemo) app.use('/_mmlref', express.static(P('_mmlref')));
 
 app.use('/', require('./routes/index'));
-app.use('/auth/github', require('./routes/auth-github'));
 app.use('/auth/google', require('./routes/auth-google'));
 app.use('/nicovideo', require('./routes/nicovideo'));
 
