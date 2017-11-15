@@ -1,6 +1,6 @@
 {
   "name": "mmlxr",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "MMLxr the MML editor with visualizer",
   "main": "app.js",
   "scripts": {
