@@ -279,6 +279,16 @@ export class UIStatic implements LazySingleton {
 		if (text != null) $e.find('.label').text(text);
 	}
 
+	showLink(url: string, filename: string, text: string) {
+		this.updateProgress(1.0, text);
+		var $e = $('#modal-progress .ui.progress .label');
+		$e.html(`<a>${text}</a>`);
+		$e.find('a')
+			.attr('href', url)
+			.attr('download', filename)
+			.on('click', ()=>{ UI.closeProgressModal(); });
+	}
+
 	closeProgressModal() {
 		$('#modal-progress').modal('hide');
 	}

@@ -18,7 +18,7 @@ require('ace/theme/flmml');
 require('ace/mode/flmml');
 require('ace/snippets/flmml');
 
-const SPLASH_MIN_TIME_MSEC = 1500;
+const SPLASH_MIN_TIME_MSEC = 4000;
 
 var __ready = $.fn.ready;
 $.fn.ready = function(fn){

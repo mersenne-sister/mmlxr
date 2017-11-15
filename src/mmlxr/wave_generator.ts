@@ -71,11 +71,8 @@ export class WaveGeneratorStatic implements LazySingleton {
 		UI.openProgressModal('Preparing...');
 
 		var complete = (format: string, url: string)=>{
-			UI.updateProgress(1.0, L('Complete'));
-			setTimeout(()=>{
-				UI.closeProgressModal();
-				Utils.doDownload(url, MMLEditor.analyze().fsTitle + '.' + format);
-			}, 200);
+			let filename = MMLEditor.analyze().fsTitle + '.' + format;
+			UI.showLink(url, filename, L('Complete (Click here to save)'));
 		};
 		
 		var worker = new Worker(App.WORKER_URL);

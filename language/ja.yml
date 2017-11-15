@@ -35,6 +35,7 @@
 'Generating Wave Data':                 音声データを生成中
 'Encoding':                             エンコード中
 'Complete':                             完了
+'Complete (Click here to save)':        完了（クリックして保存）
 'Caution':                              注意
 
 'Failed to authenticate':               認証に失敗しました。
