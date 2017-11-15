@@ -1,4 +1,3 @@
-/// <reference path="../../typings/browser.d.ts" />
 /// <reference path="../vendor/jquery-plugins.d.ts" />
 /// <reference path="../vendor/brace.d.ts" />
 /// <reference path="config.d.ts" />

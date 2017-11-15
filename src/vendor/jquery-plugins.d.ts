@@ -1,5 +1,3 @@
-/// <reference path="../../typings/browser.d.ts" />
-
 interface JQuery {
 	checkbox(opts?: any): JQuery;
 	form(opts?: any): JQuery;

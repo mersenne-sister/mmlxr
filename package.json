@@ -7,6 +7,7 @@
     "build": "gulp build",
     "sbuild": "cd FlMMLonHTML5 && gulp && cd .. && gulp",
     "test": "mocha --compilers coffee:coffee-script/register --timeout 30000 tests/welcome.coffee",
+    "prestart": "npm run build",
     "start": "node app.js"
   },
   "authors": [
@@ -14,10 +15,20 @@
   ],
   "license": "BSD-3-Clause",
   "engines": {
-    "node": "0.12.7",
-    "npm": "2.11.3"
+    "node": "8.7.0",
+    "npm": "5.5.1"
   },
   "devDependencies": {
+    "@types/ace": "0.0.35",
+    "@types/es6-promise": "0.0.33",
+    "@types/hammerjs": "^2.0.35",
+    "@types/jquery": "^3.2.16",
+    "@types/js-cookie": "^2.1.0",
+    "@types/jszip": "^3.1.2",
+    "@types/lodash": "^4.14.85",
+    "@types/sanitize-filename": "^1.1.28",
+    "@types/sprintf-js": "^1.1.0",
+    "@types/toastr": "^2.1.35",
     "coffee-script": "^1.10.0",
     "expect.js": "^0.3.1",
     "expose-loader": "^0.7.1",
@@ -43,7 +54,7 @@
   "dependencies": {
     "basic-auth-connect": "^1.0.0",
     "binary-search-tree": "~0.2.5",
-    "brace": "=0.10.0",
+    "brace": "^0.7.0",
     "cheerio": "^1.0.0-rc.2",
     "deep-filter": "^1.0.1",
     "express": "^4.13.3",
@@ -61,11 +72,11 @@
     "js-yaml": "^3.5.2",
     "jstransformer-marked": "^1.0.1",
     "jszip": "^3.1.5",
+    "lodash": "^4.17.4",
     "marked": "^0.3.5",
     "moment": "^2.11.2",
     "nib": "~1.1.0",
     "oauth": "^0.9.14",
-    "promise-polyfill": "^6.0.2",
     "pubsub-js": "^1.5.3",
     "request": "^2.69.0",
     "request-promise": "^4.2.2",

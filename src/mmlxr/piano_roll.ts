@@ -1,4 +1,3 @@
-/// <reference path="../../typings/browser.d.ts" />
 /// <reference path="../../FlMMLonHTML5/dist/dts/messenger/Messenger.d.ts" />
 /// <reference path="../vendor/binary-search-tree.d.ts" />
 /// <reference path="../vendor/fraction.d.ts" />
@@ -17,6 +16,7 @@ import * as Utils from './utils';
 
 import {AVLTree} from 'binary-search-tree';
 import Fraction = require('fraction.js');
+import * as _ from 'lodash';
 
 interface ITrackState {
 	visible: boolean;
@@ -344,8 +344,10 @@ export class PianoRollStatic {
 		if (force || l1 <= x0 || x1 <= l0) { // no intersection
 			this.removeAllEventElements();
 			hide = [];
-			show = $(     this.positionMapL.betweenBounds({ $lt : x1 }))
-			    .not(<any>this.positionMapR.betweenBounds({ $lte: x0 })).toArray();
+			show = _.difference(
+				this.positionMapL.betweenBounds({ $lt : x1 }),
+				this.positionMapR.betweenBounds({ $lte: x0 })
+			);
 		}
 		else {
 			if (l0 < x0) { // hide A

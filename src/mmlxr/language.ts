@@ -1,5 +1,3 @@
-/// <reference path="../../typings/browser.d.ts" />
-
 import {vsprintf} from 'sprintf-js';
 
 declare var language;
@@ -29,7 +27,9 @@ export function selectLanguage(lang?: string) {
 		}
 	}
 	window['selectedLanguage'] = lang;
-	$('.L').each((i, e) => $(e).text(L($(e).attr('data-L'))));
+	$('.L').each((i, e) => {
+		$(e).text(L($(e).attr('data-L')));
+	});
 	$('.L-select').each((i, e)=>{
 		var $l = $(e).children(`.L-${window['selectedLanguage']}`);
 		$(e).children('*').hide();
@@ -42,7 +42,9 @@ export function selectLanguage(lang?: string) {
 window['selectLanguage'] = selectLanguage;
 
 function init() {
-	$('.L:not([data-L])').each((i, e) => $(e).attr('data-L', $(e).text()));
+	$('.L:not([data-L])').each((i, e) => {
+		$(e).attr('data-L', $(e).text());
+	});
 	ready = true;
 }
 

@@ -1,5 +1,3 @@
-/// <reference path="../../typings/browser.d.ts" />
-
 declare module 'brace' {
 	var m: AceAjax.Ace;
 	export = m;

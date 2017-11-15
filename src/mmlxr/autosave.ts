@@ -1,4 +1,3 @@
-/// <reference path="../../typings/browser.d.ts" />
 /// <reference path="interfaces.d.ts" />
 /// <reference path="lazy_singleton.d.ts" />
 
@@ -13,6 +12,7 @@ import * as Utils from './utils';
 
 import hotkeys = require('hotkeys');
 import JSZip = require('jszip');
+import moment = require('moment');
 
 const STORAGE_AUTOSAVE_KEY = 'mmlxr:autosave';
 const STORAGE_EDITING_KEY = 'mmlxr:editing';
@@ -204,7 +204,10 @@ export class AutosaveStatic implements LazySingleton {
 				for (var entry of entries) {
 					if (entry.isProtected) zip.file(entry.id+'.flmml', entry.mml);
 				}
-				var url = URL.createObjectURL(zip.generate({ type: "blob" }));
+				return zip.generateAsync({ type: "blob" });
+			})
+			.then((out)=>{
+				var url = URL.createObjectURL(out);
 				var now = moment().format('YYYYMMDD-HHmmss');
 				Utils.doDownload(url, `MMLxr-${now}.zip`);
 				toastr.info(L('All PROTECTED files are included in the backed up archive. Please validate the contents just to be sure.'));
@@ -448,7 +451,7 @@ export class AutosaveStatic implements LazySingleton {
 				else {
 					$protectBtn.addClass('unprotected');
 				}
-				$protectBtn.on('click', (evt: JQueryEventObject)=>{
+				$protectBtn.on('click', (evt)=>{
 					var $e = $(evt.target);
 					if (!$e.hasClass('button')) $e = $e.closest('.button');
 					var $td = $e.closest('td');
@@ -525,7 +528,7 @@ export class AutosaveStatic implements LazySingleton {
 				var $trash = $('<td style="white-space:nowrap"></td>').appendTo($tr);
 				var $trashBtn = $('<button class="ui red icon button"><i class="trash icon"></icon></button>').appendTo($trash);
 				if (entry.isProtected) $trashBtn.addClass('disabled');
-				$trashBtn.on('click', (evt: JQueryEventObject)=>{
+				$trashBtn.on('click', (evt)=>{
 					var $btn = $(evt.target);
 					if (!$btn.hasClass('button')) $btn = $btn.closest('.button'); 
 					if ($btn.hasClass('disabled')) return;

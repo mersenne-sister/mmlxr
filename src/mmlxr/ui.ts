@@ -1,4 +1,3 @@
-/// <reference path="../../typings/browser.d.ts" />
 /// <reference path="../vendor/jquery-plugins.d.ts" />
 /// <reference path="../vendor/semantic-ui.d.ts" />
 /// <reference path="lazy_singleton.d.ts" />
@@ -33,7 +32,7 @@ export class UIStatic implements LazySingleton {
 		
 		var onChangeRange = function(){
 			var $e = $(this);
-			var v = parseFloat($e.val());
+			var v = parseFloat(<string>$e.val());
 			var v0 = $e.data('prev-val');
 			if (v === v0) return;
 			$e.data('prev-val', v);
@@ -186,7 +185,7 @@ export class UIStatic implements LazySingleton {
 			}
 			$e.find('.message').empty().append(message);
 			var validate = ()=>{
-				if (validator && !validator($input.val())) {
+				if (validator && !validator(<string>$input.val())) {
 					// $error.text('Invalid text');
 					$inputDiv.addClass('error');
 					$approveButton.addClass('disabled');
@@ -218,7 +217,7 @@ export class UIStatic implements LazySingleton {
 			$denyButton.find('span.text').empty().text(denyTitle);
 			$e.modal({
 				closable: false,
-				onApprove: () => resolve($input.val()),
+				onApprove: () => resolve(<string>$input.val()),
 				onDeny: () => reject('cancel')
 			}).modal('show');
 			$(() => validate());

@@ -1,5 +1,3 @@
-/// <reference path="../../typings/browser.d.ts" />
-
 export class TempoCalc {
 
 	points: any[];

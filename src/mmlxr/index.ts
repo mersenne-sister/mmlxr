@@ -3,7 +3,6 @@
 
 // require('css-loader!semantic-ui-css');
 // require('css-loader!toastr-css');
-require('script-loader!promise-polyfill');
 require('script-loader!jquery');
 require('script-loader!hammerjs');
 require('script-loader!jquery-hammerjs');
@@ -23,9 +22,9 @@ const SPLASH_MIN_TIME_MSEC = 1500;
 
 var __ready = $.fn.ready;
 $.fn.ready = function(fn){
-	__ready(function(){
+	return __ready(function(h){
 		try {
-			fn();
+			fn(h);
 		}
 		catch (ex) {
 			setTimeout(function(){
