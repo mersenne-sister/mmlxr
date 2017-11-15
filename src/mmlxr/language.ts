@@ -17,7 +17,7 @@ export function selectLanguage(lang?: string) {
 	init();
 	if (lang == null) {
 		var m = location.search.match(/[\?\&]lang=(\w+)/);
-		lang = m && m[1] || navigator.language || navigator.userLanguage;
+		lang = m && m[1] || navigator.language || navigator['userLanguage'];
 	}
 	if (lang == null && navigator['languages']) {
 		lang = 'en';

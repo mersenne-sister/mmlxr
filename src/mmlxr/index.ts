@@ -1,16 +1,16 @@
 /// <reference path="../vendor/brace.d.ts" />
 /// <reference path="../vendor/jquery-plugins.d.ts" />
 
-// require('css!semantic-ui-css');
-// require('css!toastr-css');
-require('script!promise-polyfill');
-require('script!jquery');
-require('script!hammerjs');
-require('script!jquery-hammerjs');
-require('script!jquery-splitter');
-require('script!jquery-tablesort');
-require('script!jquery.browser');
-require('script!semantic-ui');
+// require('css-loader!semantic-ui-css');
+// require('css-loader!toastr-css');
+require('script-loader!promise-polyfill');
+require('script-loader!jquery');
+require('script-loader!hammerjs');
+require('script-loader!jquery-hammerjs');
+require('script-loader!jquery-splitter');
+require('script-loader!jquery-tablesort');
+require('script-loader!jquery.browser');
+require('script-loader!semantic-ui');
 require('brace');
 require('brace/ext/language_tools');
 require('brace/ext/keybinding_menu');
@@ -46,7 +46,6 @@ $.fn.ready = function(fn){
 import {App} from './app';
 import {ProfileManager} from './profile_manager';
 import {FileManager} from './file_manager';
-import {Gist} from './gist';
 import {Autosave} from './autosave';
 import {Help} from './help';
 import {Keyboard} from './keyboard';
@@ -60,7 +59,6 @@ import {L} from './language';
 var modules: LazySingleton[] = [
 	ProfileManager,
 	FileManager,
-	Gist,
 	Autosave,
 	Help,
 	Keyboard,

@@ -73,7 +73,7 @@ export function registerSubscribers(cmdDefs): void {
 	});
 }
 
-export function delayOnce(ms: number, fn: ()=>void): number {
+export function delayOnce(ms: number, fn: ()=>void): NodeJS.Timer {
 	if (fn['__timeout']) clearTimeout(fn['__timeout']);
 	return fn['__timeout'] = setTimeout(()=>{
 		fn['__timeout'] = null;
