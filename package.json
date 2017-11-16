@@ -7,8 +7,7 @@
     "build": "gulp build",
     "sbuild": "cd FlMMLonHTML5 && gulp && cd .. && gulp",
     "test": "mocha --compilers coffee:coffee-script/register --timeout 30000 tests/welcome.coffee",
-    "prestart": "npm run build",
-    "start": "node app.js"
+    "start": "node app/app.js"
   },
   "authors": [
     "but80 <mersenne.sister@gmail.com>"
