@@ -20,6 +20,7 @@
 'Discard':                              破棄
 'Delete':                               削除
 'Open':                                 開く
+'Save':                                 保存
 'Import':                               インポート
 'Cancel':                               キャンセル
 'Ignore':                               無視
@@ -35,7 +36,6 @@
 'Generating Wave Data':                 音声データを生成中
 'Encoding':                             エンコード中
 'Complete':                             完了
-'Complete (Click here to save)':        完了（クリックして保存）
 'Caution':                              注意
 
 'Failed to authenticate':               認証に失敗しました。

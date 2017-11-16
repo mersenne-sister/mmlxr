@@ -130,6 +130,19 @@ export class UIStatic implements LazySingleton {
 		});
 	}
 
+	download(filename: string, url: string=null) {
+		return new Promise((resolve, reject)=>{
+			let $e = $('#modal-download');
+			let $content = $e.find('.content').empty();
+			$content.append(filename);
+			$e.find('a.button').attr('download', filename).attr('href', url);
+			$e.modal({
+				closable: true,
+				onHide: ()=>resolve()
+			}).modal('show');
+		});
+	}
+
 	confirm(
 		headerTitle: string,
 		message: JQueryizable,
@@ -277,16 +290,6 @@ export class UIStatic implements LazySingleton {
 			if (.0 < p) $e.addClass('active'); else $e.removeClass('active');
 		}
 		if (text != null) $e.find('.label').text(text);
-	}
-
-	showLink(url: string, filename: string, text: string) {
-		this.updateProgress(1.0, text);
-		var $e = $('#modal-progress .ui.progress .label');
-		$e.html(`<a>${text}</a>`);
-		$e.find('a')
-			.attr('href', url)
-			.attr('download', filename)
-			.on('click', ()=>{ UI.closeProgressModal(); });
 	}
 
 	closeProgressModal() {

@@ -209,7 +209,7 @@ export class AutosaveStatic implements LazySingleton {
 			.then((out)=>{
 				var url = URL.createObjectURL(out);
 				var now = moment().format('YYYYMMDD-HHmmss');
-				Utils.doDownload(url, `MMLxr-${now}.zip`);
+				UI.download(url, `MMLxr-${now}.zip`);
 				toastr.info(L('All PROTECTED files are included in the backed up archive. Please validate the contents just to be sure.'));
 			});
 	}
