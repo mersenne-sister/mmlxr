@@ -130,7 +130,7 @@ export class UIStatic implements LazySingleton {
 		});
 	}
 
-	download(filename: string, url: string=null) {
+	download(url: string, filename: string) {
 		return new Promise((resolve, reject)=>{
 			let $e = $('#modal-download');
 			let $content = $e.find('.content').empty();
