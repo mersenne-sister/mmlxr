@@ -57,7 +57,7 @@ export class FileManagerStatic implements LazySingleton {
 
 	saveInDownloadFolder() {
 		var url = URL.createObjectURL(new Blob([ MMLEditor.mml ]));
-		Utils.doDownload(url, MMLEditor.analyze().fsTitle + '.flmml');
+		UI.download(url, MMLEditor.analyze().fsTitle + '.flmml');
 	}
 
 	importLocalFile(files: FileList) {

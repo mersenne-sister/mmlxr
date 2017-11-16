@@ -1,4 +1,6 @@
 import PubSub = require('pubsub-js');
+import {UI} from './ui';
+import {L} from './language';
 
 export function createTable(title: string, cells: (HTMLElement|string)[][]): HTMLTableElement {
 	var table = document.createElement('table');
@@ -57,14 +59,6 @@ export function trimNumber(n: number, d: number): string {
 
 export function sign(n: number): number {
 	return n<0 ? -1 : 0<n ? 1 : 0;
-}
-
-export function doDownload(url: string, name: string): void {
-	var a = document.createElement('a');
-	a.href = url;
-	a.setAttribute('download', name);
-	a.dispatchEvent(new CustomEvent('click'));
-	// URL.revokeObjectURL(url);
 }
 
 export function registerSubscribers(cmdDefs): void {
