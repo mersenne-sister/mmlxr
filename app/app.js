@@ -28,22 +28,22 @@ function loadText(filePath) {
 
 var deploy = {
 	environment: (
-		loadText('.deploy-env') ||
+		loadText('../.deploy-env') ||
 		'develop'
 	).replace(/\s+$/, ''),
 	commitHash: (
-		loadText('.deploy-hash') ||
+		loadText('../.deploy-hash') ||
 		child_process.execSync('git log -1 --format=%H', {cwd:__dirname}).toString()
 	).replace(/\s+$/, ''),
 	version: (
-		loadText('.deploy-version') ||
+		loadText('../.deploy-version') ||
 		child_process.execSync('git describe --tags --abbrev=0', {cwd:__dirname}).toString()
 	).replace(/\s+$/, '')
 };
 
 console.log(deploy);
 
-var config = yaml.safeLoad(loadText('config.yml'))[deploy.environment];
+var config = yaml.safeLoad(loadText('../config.yml'))[deploy.environment];
 if (!config) throw 'Invalid Environment';
 config.deploy = deploy;
 app.set('config', config);
@@ -59,10 +59,10 @@ app.set('language', language);
 app.set('port', config._port);
 if (config._basicAuth) app.use(basicAuth(config._basicAuth._user, config._basicAuth._pass));
 app.set('view engine', 'jade');
-app.set('views', P('src/views'));
+app.set('views', P('views'));
 app.use(stylus.middleware({
-	src: P('src/style'),
-	dest: P('build/css'),
+	src: P('style'),
+	dest: P('../build/css'),
 	debug: true,
 	force: true,
 	compile: function(str, path) {
@@ -85,7 +85,7 @@ if (deploy.environment == 'develop') {
 
 app.use('/components/jquery', express.static(P('node_modules/jquery/dist')));
 app.use(favicon(P('static/favicon.ico')));
-app.use(express.static(P('build')));
+app.use(express.static(P('../build')));
 
 if (config.enableDemo) app.use('/_mmlref', express.static(P('_mmlref')));
 

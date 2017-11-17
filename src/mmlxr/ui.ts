@@ -111,6 +111,29 @@ export class UIStatic implements LazySingleton {
 			.show();
 	}
 
+	modal($modal: JQuery, config?: any): ()=>Promise<"hide"|"approve"|"deny"> {
+		config = config || {};
+		let resolver = (id)=>{
+			return ($e: JQuery)=>{
+				let resolve = $modal.data('resolve');
+				if (id == 'approve' && config.onApproveCancel && config.onApproveCancel()) return false;
+				console.log('modal resolver', id, resolve != null);
+				$modal.data('resolve', null);
+				if (resolve) resolve(id);
+			};
+		};
+		config.onHide = resolver('hide');
+		config.onDeny = resolver('deny');
+		config.onApprove = resolver('approve');
+		$modal.modal(config);
+		return ()=>{
+			return new Promise((resolve, reject)=>{
+				$modal.data('resolve', resolve);
+				$modal.modal('show');
+			});
+		};
+	}
+
 	alert(messageOrTemplate: string|JQuery, buttonTitle: string='OK') {
 		return new Promise((resolve, reject)=>{
 			var $e = $('#modal-alert');
@@ -150,7 +173,7 @@ export class UIStatic implements LazySingleton {
 		denyTitle: string,
 		useNegativeColor: boolean=false
 	): Promise<boolean> {
-		return new Promise((resolve, reject)=>{
+		return new Promise((resolve)=>{
 			var $e = $('#modal-confirm');
 			$e.find('.header').empty().text(headerTitle);
 			$e.find('.content').empty().append(message);
@@ -160,7 +183,7 @@ export class UIStatic implements LazySingleton {
 				.removeClass(useNegativeColor ? 'positive' : 'negative')
 				.addClass(useNegativeColor ? 'negative' : 'positive');
 			var fn = ($btn)=>{
-				if ($btn.hasClass('deny')) reject('cancel'); else resolve(true);
+				if ($btn.hasClass('deny')) resolve(false); else resolve(true);
 			};
 			$e.modal({
 				closable: false,

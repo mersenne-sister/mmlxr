@@ -30,7 +30,7 @@ var vars = {
 };
 for (var k of Object.keys(vars.licenses)) {
 	var p = vars.licenses[k].split(/\//);
-	p.unshift(path.dirname(__dirname));
+	p.unshift(path.dirname(path.dirname(__dirname)));
 	vars.licenses[k] = fs.readFileSync(path.resolve.apply(path, p), 'utf8');
 }
 

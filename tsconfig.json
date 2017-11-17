@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "module": "commonjs",
     "noImplicitAny": false,
     "removeComments": false,
@@ -9,27 +9,10 @@
     "outDir": "build/js-modules",
     "rootDir": "src"
   },
-  "files": [
-    "./src/mmlxr/app.ts",
-    "./src/mmlxr/autosave.ts",
-    "./src/mmlxr/consts.ts",
-    "./src/mmlxr/error_tab.ts",
-    "./src/mmlxr/file_manager.ts",
-    "./src/mmlxr/help.ts",
-    "./src/mmlxr/index.ts",
-    "./src/mmlxr/keyboard.ts",
-    "./src/mmlxr/mml_editor.ts",
-    "./src/mmlxr/menu.ts",
-    "./src/mmlxr/mixer.ts",
-    "./src/mmlxr/note_tab.ts",
-    "./src/mmlxr/piano_roll.ts",
-    "./src/mmlxr/tempo_calc.ts",
-    "./src/mmlxr/track_tab.ts",
-    "./src/mmlxr/ui.ts",
-    "./src/mmlxr/wave_generator.ts",
-    "./src/mmlxr/utils.ts"
+  "include": [
+    "src/mmlxr/*.ts"
   ],
-  "filesGlob": [
-    "!FlMMLonHTML5/**"
+  "exclude": [
+    "FlMMLonHTML5/**"
   ]
 }

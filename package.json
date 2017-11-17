@@ -1,14 +1,13 @@
 {
   "name": "mmlxr",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "MMLxr the MML editor with visualizer",
-  "main": "app.js",
+  "main": "app/app.js",
   "scripts": {
     "build": "gulp build",
     "sbuild": "cd FlMMLonHTML5 && gulp && cd .. && gulp",
-    "test": "mocha --compilers coffee:coffee-script/register --timeout 30000 tests/welcome.coffee",
     "prestart": "npm run build",
-    "start": "node app.js"
+    "start": "node app/app.js"
   },
   "authors": [
     "but80 <mersenne.sister@gmail.com>"
@@ -29,7 +28,6 @@
     "@types/sanitize-filename": "^1.1.28",
     "@types/sprintf-js": "^1.1.0",
     "@types/toastr": "^2.1.35",
-    "coffee-script": "^1.10.0",
     "expect.js": "^0.3.1",
     "expose-loader": "^0.7.1",
     "gulp": "^3.9.0",
@@ -43,7 +41,6 @@
     "rimraf": "^2.5.1",
     "run-sequence": "^2.2.0",
     "script-loader": "^0.7.2",
-    "selenium-webdriver": "^3.6.0",
     "string-replace-loader": "^1.0.0",
     "ts-loader": "^3.1.1",
     "typescript": "^2.6.1",

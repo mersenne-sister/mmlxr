@@ -117,7 +117,7 @@ export class PianoRollStatic {
 					PianoRollStatic._history.pop();
 				}
 			}
-			PianoRollStatic.prototype.constructor.call(PianoRoll, mml, tracks, totalTimeMs, mutedTracks, adjustScroll, initialScroll);
+			PianoRoll.init(mml, tracks, totalTimeMs, mutedTracks, adjustScroll, initialScroll);
 		}
 		return PianoRoll;
 	}
@@ -143,6 +143,10 @@ export class PianoRollStatic {
 	}
 
 	constructor(mml: string, tracks:any[][], totalTimeMs: number, mutedTracks?: number[], adjustScroll: boolean=false, initialScroll?: number) {
+		this.init(mml, tracks, totalTimeMs, mutedTracks, adjustScroll, initialScroll);
+	}
+
+	init(mml: string, tracks:any[][], totalTimeMs: number, mutedTracks?: number[], adjustScroll: boolean=false, initialScroll?: number) {
 		console.log('Creating PianoRoll %s tracks', tracks.length);
 		
 		this.source = mml;
