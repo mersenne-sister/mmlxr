@@ -67,6 +67,14 @@ export function registerSubscribers(cmdDefs): void {
 	});
 }
 
+export function sleep(ms: number): Promise<void> {
+	return new Promise((resolve, reject)=>{
+		setTimeout(()=>{
+			resolve();
+		}, ms);
+	});
+}
+
 export function delayOnce(ms: number, fn: ()=>void): NodeJS.Timer {
 	if (fn['__timeout']) clearTimeout(fn['__timeout']);
 	return fn['__timeout'] = setTimeout(()=>{
