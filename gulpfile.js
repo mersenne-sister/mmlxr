@@ -25,7 +25,7 @@ gulp.task('lint:yaml', function(){
 		.pipe(yamlValidate());
 });
 
-gulp.task('lint', ['lint:yaml']);
+gulp.task('lint', gulp.series('lint:yaml'));
 
 gulp.task('build:snippet', function(done){
 	var p = path.join(__dirname, 'src', 'js', 'ace', 'snippets-flmml.yml');
@@ -51,12 +51,12 @@ gulp.task('build:peg', function(){
 		.pipe(gulp.dest('./src/peg/'));
 });
 
-gulp.task('build', ['build:snippet', 'build:peg', 'lint'], function(){
+gulp.task('build', gulp.series('build:snippet', 'build:peg', 'lint', function build_main(){
 	var config = require('./webpack.config.js');
 	return gulp.src('src/mmlxr/index.ts')
 		.pipe(webpack(config))
 		.pipe(gulp.dest('./'));
-});
+}));
 
 gulp.task('watch', function(){
 	var config = require('./webpack.config.js');
@@ -67,10 +67,10 @@ gulp.task('watch', function(){
 		.pipe(gulp.dest('./'));
 });
 
-gulp.task('copy:static', ['build:snippet'], function(){
+gulp.task('copy:static', gulp.series('build:snippet', function copy_static_main(){
 	return gulp.src(['./static/**'], {base:'static'})
 		.pipe(gulp.dest('./build/'));
-});
+}));
 gulp.task('copy:flmml', function(){
 	return gulp.src(['./FlMMLonHTML5/flmmlworker.*'], {base:'FlMMLonHTML5'})
 		.pipe(gulp.dest('./build/js/'));
@@ -94,13 +94,13 @@ gulp.task('copy:libmp3lame', function(){
 	return gulp.src(['./libmp3lame-js/dist/**'], {base:'libmp3lame-js/dist'})
 		.pipe(gulp.dest('./build/components/libmp3lame-js/'));
 });
-gulp.task('copy', [ 'copy:static', 'copy:flmml', 'copy:dpcm-worker', 'copy:semantic-ui', /*'copy:toastr',*/ 'copy:libmp3lame' ]);
+gulp.task('copy', gulp.series('copy:static', 'copy:flmml', 'copy:dpcm-worker', 'copy:semantic-ui', /*'copy:toastr',*/ 'copy:libmp3lame'));
 
-gulp.task('rebuild', ['clean'], function(done){
+gulp.task('rebuild', gulp.series('clean', function rebuild_main(done){
 	runSequence(
 		['copy', 'build'],
 		done
 	);
-});
+}));
 
-gulp.task('default', [ 'copy', 'build' ]);
+gulp.task('default', gulp.series('copy', 'build'));
