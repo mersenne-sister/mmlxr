@@ -9,6 +9,7 @@ import {UI} from './ui';
 import {FlmmlAnalyzer} from './flmml_analyzer';
 import {L} from './language';
 import * as Utils from './utils';
+import * as ace from 'brace';
 
 import hotkeys = require('hotkeys');
 import JSZip = require('jszip');
@@ -25,7 +26,7 @@ export class AutosaveStatic implements LazySingleton {
 
 	ready: boolean;
 	db: NdxdbConnection;
-	ace: AceAjax.Editor;
+	ace: ace.Editor;
 	private lazyStoreTimeout;
 
 	constructor() {

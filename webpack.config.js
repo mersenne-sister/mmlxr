@@ -37,23 +37,23 @@ var opts = {
 	module: {
 		loaders: [
 			{ test: /\.ts$/, loader: 'ts-loader' },
-			{
-				test: /language_tools\.js$/,
-				loader: 'string-replace-loader',
-				query: {
-					search: 'ace\\.define\\("ace/autocomplete/util",[\\s\\S]+?ace\\.define\\("ace/autocomplete",',
-					replace: fs.readFileSync(path.join(__dirname, 'src', 'js', 'ace', 'autocomplete-util-flmml.js')) + 'ace.define("ace/autocomplete",',
-					flags: ''
-				}
-			},
-			{
-				test: /keybinding_menu\.js$/,
-				loader: 'string-replace-loader',
-				query: {
-					search: 'dom.importCssString',
-					replace: '//'
-				}
-			},
+			// {
+			// 	test: /language_tools\.js$/,
+			// 	loader: 'string-replace-loader',
+			// 	query: {
+			// 		search: 'ace\\.define\\("ace/autocomplete/util",[\\s\\S]+?ace\\.define\\("ace/autocomplete",',
+			// 		replace: fs.readFileSync(path.join(__dirname, 'src', 'js', 'ace', 'autocomplete-util-flmml.js')) + 'ace.define("ace/autocomplete",',
+			// 		flags: ''
+			// 	}
+			// },
+			// {
+			// 	test: /keybinding_menu\.js$/,
+			// 	loader: 'string-replace-loader',
+			// 	query: {
+			// 		search: 'dom.importCssString',
+			// 		replace: '//'
+			// 	}
+			// },
 			// { test: /\.css$/, loader: 'style-loader!css-loader' },
 			// { test: /\.png$/, loader: 'url-loader?limit=100000' },
 			// { test: /\.jpg$/, loader: 'file-loader' },
