@@ -8,7 +8,6 @@ var peg = require('gulp-peg');
 var replace = require('gulp-replace');
 var rename = require('gulp-rename');
 var debug = require('gulp-debug');
-var runSequence = require('run-sequence');
 var fs = require('fs');
 var path = require('path');
 var yaml = require('js-yaml');
@@ -96,11 +95,6 @@ gulp.task('copy:libmp3lame', function(){
 });
 gulp.task('copy', gulp.series('copy:static', 'copy:flmml', 'copy:dpcm-worker', 'copy:semantic-ui', /*'copy:toastr',*/ 'copy:libmp3lame'));
 
-gulp.task('rebuild', gulp.series('clean', function rebuild_main(done){
-	runSequence(
-		['copy', 'build'],
-		done
-	);
-}));
+gulp.task('rebuild', gulp.series('clean', 'copy', 'build'));
 
 gulp.task('default', gulp.series('copy', 'build'));
