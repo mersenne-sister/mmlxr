@@ -1,4 +1,3 @@
-/// <reference path="../vendor/brace.d.ts" />
 /// <reference path="../vendor/jquery-plugins.d.ts" />
 
 // require('css-loader!semantic-ui-css');

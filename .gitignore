@@ -88,6 +88,7 @@ build/
 *.cache
 .shipit-*
 config.yml
+shipitfile.js
 *-e
 
 # Created by https://www.gitignore.io/api/intellij

@@ -1,5 +1,4 @@
 /// <reference path="../vendor/jquery-plugins.d.ts" />
-/// <reference path="../vendor/brace.d.ts" />
 /// <reference path="config.d.ts" />
 /// <reference path="interfaces.d.ts" />
 /// <reference path="lazy_singleton.d.ts" />
@@ -12,10 +11,10 @@ import {FlmmlAnalyzer} from './flmml_analyzer';
 import {L} from './language';
 import * as Utils from './utils';
 import toastr = require('toastr');
+import * as ace from 'brace';
 
-var Range = ace['acequire']('ace/range').Range;
-var language_tools = ace['acequire']('ace/ext/language_tools');
-var keybinding_menu = ace['acequire']('ace/ext/keybinding_menu');
+const language_tools = ace.acequire('ace/ext/language_tools');
+const keybinding_menu = ace.acequire('ace/ext/keybinding_menu');
 
 interface IWAV9Entry {
 	id: number;
@@ -27,7 +26,7 @@ interface IWAV9Entry {
 export class MMLEditorStatic implements LazySingleton {
 
 	ready: boolean;
-	ace: AceAjax.Editor;
+	ace: ace.Editor;
 	
 	private confirmNeededBefore: boolean = false;
 
@@ -36,8 +35,8 @@ export class MMLEditorStatic implements LazySingleton {
 	}
 
 	private init() {
-		// var snippetManager = ace['acequire']('ace/snippets').snippetManager;
-		var config = ace['acequire']('ace/config');
+		// const snippetManager = ace.acequire('ace/snippets').snippetManager;
+		const config = ace.acequire('ace/config');
 
 		// config.set('modePath', 'ace');
 		// config.set('themePath', 'ace');
@@ -60,10 +59,10 @@ export class MMLEditorStatic implements LazySingleton {
 		this.ace['textInput'].getElement().tabIndex = -1;
 		
 		// Disable textCompleter (ignore local text)
-		language_tools.setCompleters(this.ace['completers'] = [ace['acequire']('ace/mode/flmml').Mode.prototype.completer]);
+		language_tools.setCompleters(this.ace['completers'] = [ace.acequire('ace/mode/flmml').Mode.prototype.completer]);
 		
 		// Override autocomplete popup width
-		var autocomplete = ace['acequire']('ace/autocomplete').Autocomplete;
+		const autocomplete = ace.acequire('ace/autocomplete').Autocomplete;
 		var fn = autocomplete.startCommand.exec;
 		autocomplete.startCommand.exec = (editor)=>{
 			fn(editor);
@@ -83,7 +82,7 @@ export class MMLEditorStatic implements LazySingleton {
 		});
 
 		// Autosave (as Rescue) for every time type text
-		this.ace['on']('change', ()=>this.onEditorChange());
+		this.ace.on('change', ()=>this.onEditorChange());
 
 		this.ready = true;
 	}
@@ -182,7 +181,7 @@ export class MMLEditorStatic implements LazySingleton {
 				this.ace.clearSelection();
 				this.ace.getSession().setValue(mml);
 				if (select) {
-					var range: AceAjax.Range = new Range(select.r, select.c, select.r, select.c + select.n);
+					var range: ace.Range = new ace.Range(select.r, select.c, select.r, select.c + select.n);
 					this.ace.getSession().getSelection().setSelectionRange(range);
 				}
 				this.ace.focus();
@@ -219,7 +218,7 @@ export class MMLEditorStatic implements LazySingleton {
 
 	selectRange(row: number, col: number, len: number): void {
 		this.scrollToLine(row);
-		var range: AceAjax.Range = new Range(row, col, row, col + len);
+		var range: ace.Range = new ace.Range(row, col, row, col + len);
 		this.ace.getSession().getSelection().setSelectionRange(range);
 		this.scrollHCenter();
 	}
@@ -230,7 +229,7 @@ export class MMLEditorStatic implements LazySingleton {
 		this.scrollHCenter();
 	}
 
-	private get endPos(): AceAjax.Position {
+	private get endPos(): ace.Position {
 		var r = this.ace.getSession().getLength() - 1;
 		return {
 			row: r,
@@ -238,7 +237,7 @@ export class MMLEditorStatic implements LazySingleton {
 		};
 	}
 	
-	private forceLastEmptyLine(): AceAjax.Position {
+	private forceLastEmptyLine(): ace.Position {
 		var pos = this.endPos;
 		if (0 < pos.column) {
 			this.ace.getSession().insert(pos, "\n");
@@ -247,8 +246,8 @@ export class MMLEditorStatic implements LazySingleton {
 		return pos;
 	}
 
-	appendLine(text: string, dontMove: boolean=false): AceAjax.Position {
-		var pos0: AceAjax.Position = this.ace.getCursorPosition();
+	appendLine(text: string, dontMove: boolean=false): ace.Position {
+		var pos0: ace.Position = this.ace.getCursorPosition();
 		var pos = this.forceLastEmptyLine();
 		this.ace.getSession().insert(pos, text.replace(/\n?$/, "\n"));
 		if (dontMove) this.moveTo(pos0.row, pos0.column);
