@@ -79,7 +79,8 @@ if (deploy.environment == 'develop') {
 	app.use('/js/flmmlworker.map.js', express.static(P('FlMMLonHTML5/flmmlworker.map.js')));
 	app.use('/js/dpcm-worker.js', express.static(P('dpcm-worker/dist/dpcm-worker.js')));
 	app.use('/js/dpcm-worker.map.js', express.static(P('dpcm-worker/dist/dpcm-worker.map.js')));
-	app.use('/js', express.static(P('libmp3lame-js/dist')));
+	app.use('/js/libmp3lame.js', express.static(P('libmp3lame-js/dist/libmp3lame.js')));
+	app.use('/js/libmp3lame.min.js', express.static(P('libmp3lame-js/dist/libmp3lame.min.js')));
 	app.use('/components/semantic-ui', express.static(P('Semantic-UI/dist')));
 }
 
