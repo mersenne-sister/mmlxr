@@ -15,6 +15,7 @@ import * as ace from 'brace';
 
 const language_tools = ace.acequire('ace/ext/language_tools');
 const keybinding_menu = ace.acequire('ace/ext/keybinding_menu');
+const aceRange: any = ace.acequire('ace/range').Range;
 
 interface IWAV9Entry {
 	id: number;
@@ -181,7 +182,7 @@ export class MMLEditorStatic implements LazySingleton {
 				this.ace.clearSelection();
 				this.ace.getSession().setValue(mml);
 				if (select) {
-					var range: ace.Range = new ace.Range(select.r, select.c, select.r, select.c + select.n);
+					var range = new aceRange(select.r, select.c, select.r, select.c + select.n);
 					this.ace.getSession().getSelection().setSelectionRange(range);
 				}
 				this.ace.focus();
@@ -218,7 +219,7 @@ export class MMLEditorStatic implements LazySingleton {
 
 	selectRange(row: number, col: number, len: number): void {
 		this.scrollToLine(row);
-		var range: ace.Range = new ace.Range(row, col, row, col + len);
+		var range = new aceRange(row, col, row, col + len);
 		this.ace.getSession().getSelection().setSelectionRange(range);
 		this.scrollHCenter();
 	}
