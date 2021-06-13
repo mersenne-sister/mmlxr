@@ -59,7 +59,7 @@
     "express": "^4.16.4",
     "fraction.js": "^4.0.12",
     "google-material-color": "^1.2.6",
-    "googleapis": "^22.2.0",
+    "googleapis": "^39.1.0",
     "hammerjs": "^2.0.6",
     "hotkeys": "=1.0.0",
     "pug": "^3.0.2",
