@@ -58,7 +58,7 @@ app.set('language', language);
 
 app.set('port', config._port);
 if (config._basicAuth) app.use(basicAuth(config._basicAuth._user, config._basicAuth._pass));
-app.set('view engine', 'jade');
+app.set('view engine', 'pug');
 app.set('views', P('views'));
 app.use(stylus.middleware({
 	src: P('style'),

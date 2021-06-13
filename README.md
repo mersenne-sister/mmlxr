@@ -107,7 +107,7 @@ npm start
 
 - Drag Out
   
-  ```jade
+  ```pug
   a(href='#' id='dragout' draggable=true): |Drag me onto your desktop
   ```
   
