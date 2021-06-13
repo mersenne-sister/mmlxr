@@ -75,7 +75,7 @@ export function sleep(ms: number): Promise<void> {
 	});
 }
 
-export function delayOnce(ms: number, fn: ()=>void): NodeJS.Timer {
+export function delayOnce(ms: number, fn: ()=>void): number {
 	if (fn['__timeout']) clearTimeout(fn['__timeout']);
 	return fn['__timeout'] = setTimeout(()=>{
 		fn['__timeout'] = null;

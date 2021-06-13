@@ -20,7 +20,7 @@ var vars = {
 		FlMMLonHTML5       : 'FlMMLonHTML5/LICENSE',
 		googleMaterialColor: 'node_modules/google-material-color/LICENSE',
 		gulp               : 'node_modules/gulp/LICENSE',
-		jade               : 'node_modules/jade/LICENSE',
+		pug                : 'node_modules/pug/LICENSE',
 		jquery             : 'node_modules/jquery/LICENSE.txt',
 		moment             : 'node_modules/moment/LICENSE',
 		stylus             : 'node_modules/stylus/LICENSE',
