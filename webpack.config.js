@@ -9,7 +9,7 @@ var opts = {
 		app :'./src/mmlxr/index.ts'
 	},
 	output: {
-		filename: 'build/mmlxr.bundle.js'
+		filename: 'docs/mmlxr.bundle.js'
 	},
 	resolve: {
 		modules: [

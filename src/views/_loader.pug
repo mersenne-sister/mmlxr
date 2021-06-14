@@ -1,0 +1,37 @@
+script.
+    document.write([
+        '<div id="initial-loader">',
+            '<div class="splash">',
+                '<div class="logo"><div class="logo-img"></div><div class="logo-text">MMLxr</div></div>',
+                '<span class="version"></span>',
+                '<br/>',
+                '<div class="copyright">Copyright &copy; 2016 Mersenne Sister.</div>',
+                '<br/>',
+                '<div class="unsupported-text">',
+                    'Sorry, this browser is not supported or recommended.<br/>',
+                    'Please use <a href="https://www.google.co.jp/chrome/" target="_blank">Google Chrome</a>.<br/>',
+                    '<br/><button class="ui red button">Use anyway</button>',
+                '</div>',
+            '</div>',
+        '</div>'
+    ].join(''));
+    $('#initial-loader .version, .splash .version').text(config.version);
+    $(function(){
+        $('#initial-loader .splash').css('opacity', 1.0);
+        if (!config.browserRecommended) {
+            // PubSub.publish = $.noop;
+            var $e = $('#initial-loader').addClass('unsupported');
+            var $b = $e.find('.ui.red.button');
+            if (config.browserSupported) {
+                $b.on('click', function(){
+                    $('#region').css('visibility', 'visible');
+                    $('#initial-loader').css('opacity', 0.0);
+                    setTimeout(function(){ $('#initial-loader').remove(); }, 1000);
+                    App.startup();
+                });
+            }
+            else {
+                $b.remove();
+            }
+        }
+    });

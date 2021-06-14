@@ -1,4 +1,5 @@
 .idea/
+*.bak
 
 # Created by https://www.gitignore.io/api/osx,windows,node
 
@@ -86,9 +87,6 @@ node_modules
 build/
 #typings/
 *.cache
-.shipit-*
-config.yml
-shipitfile.js
 *-e
 
 # Created by https://www.gitignore.io/api/intellij

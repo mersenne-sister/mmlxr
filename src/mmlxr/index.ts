@@ -93,4 +93,8 @@ $(()=>{
 		$(() => App.boot());
 		$('#region').css('visibility', 'visible');
 	}
+	console.log('importantNotice: ' + config.importantNotice);
+	if (config.importantNotice) {
+		$('#region-pianoroll-important-notice').css('display', 'flex');
+	}
 });

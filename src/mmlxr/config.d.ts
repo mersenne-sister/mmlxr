@@ -1,20 +1,9 @@
 declare type Config = {
-	deploy: {
-		commitHash: string;
-		version: string;
-		environment: string;
-	};
+	version: string;
 	urlRoot: string;
-	github: {
-		clientId: string;
-	};
-	googleDrive: {
-		clientId: string;
-		browserKey: string;
-		scope: string;
-	};
 	browserSupported?: boolean;
 	browserRecommended?: boolean;
+	importantNotice?: boolean;
 };
 
 declare var config: Config;

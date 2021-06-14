@@ -1,0 +1,135 @@
+.ace-flmml
+	background-color $ace-flmml-black
+	color $ace-flmml-lightgrey
+	
+	.ace_gutter
+		background $ace-flmml-black3
+		color #8F908A
+	.ace_print-margin
+		width 1px
+		background #555651
+	.ace_cursor
+		color $ace-flmml-white
+	.ace_marker-layer .ace_selection
+		background $ace-flmml-darkgrey
+	&.ace_multiselect .ace_selection.ace_start
+		box-shadow 0 0 3px 0px $ace-flmml-black
+	.ace_marker-layer .ace_step
+		background rgb(102, 82, 0)
+	.ace_marker-layer .ace_bracket
+		margin -1px 0 0 -1px
+		border 1px solid $ace-flmml-darkgrey
+	.ace_marker-layer .ace_active-line
+		background $ace-flmml-black0
+	.ace_gutter-active-line
+		background-color $ace-flmml-black2
+	.ace_marker-layer .ace_selected-word
+		border 1px solid $ace-flmml-darkgrey
+	.ace_invisible
+		color #52524d
+	.ace_entity
+		color $ace-flmml-white
+		&.ace_suffix
+			opacity .67
+		&.ace_parameter
+			opacity .67
+		&.ace_rest
+			color $ace-flmml-lightgrey
+	.ace_punctuation
+		color $ace-flmml-red
+		opacity .67
+	.ace_command
+		color $ace-flmml-lightgrey
+		&.ace_tune
+			color $ace-flmml-cyan
+		&.ace_character
+			color $ace-flmml-violet
+		&.ace_time
+			color $ace-flmml-green
+			&.ace_tie
+				opacity .67
+	.ace_invalid
+		color $ace-flmml-red
+		background-color $ace-flmml-red
+	.ace_paren
+		color $ace-flmml-red
+	.ace_operator
+		color $ace-flmml-cyan
+	.ace_definition
+		color $ace-flmml-yellow
+	.ace_variable
+		color $ace-flmml-orange
+		&.ace_placeholder
+			font-style italic
+	.ace_comment
+		color $ace-flmml-grey
+	.ace_data
+		color $ace-flmml-yellow
+	.ace_indent-guide
+		background "url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAEklEQVQImWPQ0FD0ZXBzd/wPAAjVAoxeSgNeAAAAAElFTkSuQmCC) right repeat-y"
+	.ace_parameter
+		opacity .67
+	.ace_hidden
+		display none
+
+.ace_search
+	*:not(.ace_searchbtn_close)
+		font-size 12px
+	.ace_search_field
+		font-size 16px
+		font-family $font-monospace
+		&::-webkit-input-placeholder
+			font-weight normal
+			font-size 12px
+			line-height 16px
+	&.right
+		border-radius 0 0 0 2px !important
+	.ace_search_form.ace_nomatch
+		outline none
+		border-color $error-color
+	.ace_button
+		font-family $font-monospace
+		border 1px solid rgba(160,160,160,0.33)
+		background-color #fff
+		&.checked
+			background-color $accent-color
+			color #fff
+
+.ace_text-layer
+	font-size 1rem !important
+
+#ace_settingsmenu, #kbshortcutmenu
+	&, & *
+		touch-action manipulation
+	font-size 0.9rem
+	background-color #333 !important
+	color #999 !important
+	line-height 1.2rem
+	box-shadow 4px 4px 8px rgba(0, 0, 0, 0.5)
+	position fixed
+	margin 0
+	left   5vw
+	top    5vh
+	width  90vw
+	height 90vh
+	padding 1em 0.5em 1em 1em
+	z-index 9991
+	cursor default
+	h1
+		margin-top 0 !important
+		color #ccc !important
+	display flex
+	flex-direction column
+	flex-wrap wrap
+	overflow-x auto
+	.ace_optionsMenuEntry
+		flex 0 0 auto
+		font-weight normal
+		.ace_optionsMenuCommand
+			color $accent-color
+			min-width 13em
+			display inline-block
+			text-align right
+		.ace_optionsMenuKey
+			color #ccc
+

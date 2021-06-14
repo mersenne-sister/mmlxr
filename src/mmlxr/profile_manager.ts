@@ -35,7 +35,7 @@ export class ProfileManagerStatic implements LazySingleton {
 
 	private save() {
 		var data = {
-			deploy: config.deploy,
+			deploy: {version: config.version},
 			splitters: {}
 		};
 		$('.uix.splitter').each((i, e)=>{

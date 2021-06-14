@@ -6,9 +6,8 @@
 ```bash
 git submodule init
 git submodule update
-gulp rebuild
-cp config.sample.yml config.yml
 vim config.yml
+gulp rebuild
 npm start
 ```
 
