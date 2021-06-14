@@ -1,0 +1,216 @@
+#modal-block.ui.basic.modal
+	.content
+		.ui.large.text.loader: | Loading
+
+#modal-progress.ui.basic.modal
+	.content
+		.ui.teal.progress
+			.bar: .progress
+			.label
+
+#modal-alert.ui.small.modal
+	.content
+	.actions
+		.ui.teal.deny.button
+
+#modal-download.ui.small.modal
+	.content
+	.actions
+		a.ui.teal.deny.button
+			span.L: |Save
+
+#modal-confirm.ui.small.modal
+	.header
+		|Confirm
+	.content
+		|Are you sure?
+	.actions
+		.ui.black.deny.button
+			span.text: |No
+		.ui.right.labeled.icon.button
+			span.text: |Yes
+			i.checkmark.icon
+
+#modal-prompt.ui.small.modal
+	.header
+		|Prompt
+	.content
+		.message
+			|Input text
+		.ui.icon.input(style='width:100%')
+			i.icon
+			input(type='text')
+		//- .error
+	.actions
+		.ui.black.deny.button
+			span.text: |No
+		.ui.positive.right.labeled.icon.button
+			span.text: |Yes
+			i.checkmark.icon
+
+#modal-form.ui.small.modal
+	.header
+		|Form
+	.content
+	.actions
+		.ui.black.deny.button
+			span.text: |No
+		.ui.positive.right.labeled.icon.button
+			span.text: |Yes
+			i.checkmark.icon
+
+#template-pikokakikoselector.template.ui.list
+	.item
+		.header.L: |Input the URL or player tag in one of the following format
+		.ui.bulleted.list
+			.item
+				|#[i 123456] (#[span.L An integer number])
+			.item
+				|http://dic.nicovideo.jp/mml/#[i 123456]
+			.item
+				|http://dic.nicovideo.jp/mml_id/#[i 123456]
+			.item
+				|&lt;img src="/img/pikoplayer.png" alt="#[i 123456]"&gt;
+	br
+	.item
+		.header.L: |Related links
+		.ui.bulleted.list
+			a.item.L(href='http://dic.nicovideo.jp/a/%E3%83%8B%E3%82%B3%E3%83%8B%E3%82%B3%E5%A4%A7%E7%99%BE%E7%A7%91%3A%E3%83%94%E3%82%B3%E3%82%AB%E3%82%AD%E3%82%B3%E6%9B%B2%E3%82%B8%E3%83%A3%E3%83%B3%E3%83%AB%E4%B8%80%E8%A6%A7' target='_blank')
+				|Pikokakiko genre list (Japanese)
+	br
+
+#template-dpcmoptionselector.template.ui.form
+	// stereoMix?: boolean;
+	// stereoLeft?: boolean;
+	// normalizeCheck?: boolean;
+	// inputVolumeCb?: number;
+	// dpcmSampleRateCb?: number;
+	// dmcAlignCheck?: boolean;
+	
+	.field
+		.preview
+			canvas
+			.clipArea
+	.fields
+		.three.wide.field
+			label: |Channels
+			div
+				span.originalChannels
+		.three.wide.field
+			label: |Sample Rate
+			div
+				span.originalSampleRate
+				|&nbsp;Hz
+		.two.wide.field
+			label: |Length
+			div
+				span.originalSampleLength
+		.four.wide.field
+			label
+			button.ui.labeled.icon.grey.preview-source.button
+				i.play.icon
+				|Source
+			audio.preview-source(controls=false style='display:none')
+		.four.wide.field
+			label
+			button.ui.labeled.icon.grey.preview-dpcm.button
+				i.play.icon
+				|DPCM
+			audio.preview-dpcm(controls=false style='display:none')
+	.field
+		label: |Preview MML
+		div
+			input(type='text' name='previewMML' value='t60@e1,0,0,127,20q14v15 o1e-4o0b-4.f2c2.')
+	hr
+	.two.fields
+		.field
+			label: |Start Position
+			input(type='text' name='startPosition' maxlength=8 value=0)
+		.field
+			label: |End Position
+			input(type='text' name='endPosition' maxlength=8 value=0)
+	.two.fields
+		.field
+			label: |Stereo Source Processing
+			.ui.selection.dropdown.channelToUse
+				input(type='hidden' name='channelToUse' value='both')
+				i.dropdown.icon
+				.default.text: |Stereo Source Processing
+				.menu
+					.item(data-value='both'): |Mix Both Channels
+					.item(data-value='left'): |Use Left Only
+					.item(data-value='right'): |Use Right Only
+		.field
+			label: |DPCM Sampling Rate
+			.ui.selection.dropdown
+				input(type='hidden' name='dpcmSampleRateCb' value=-1)
+				i.dropdown.icon
+				.default.text: |DPCM Sampling Rate
+				.menu
+					.item(data-value=0): |4.18KHz
+					.item(data-value=1): |4.71KHz
+					.item(data-value=2): |5.26KHz
+					.item(data-value=3): |5.59KHz
+					.item(data-value=4): |6.26KHz
+					.item(data-value=5): |7.05KHz
+					.item(data-value=6): |7.92KHz
+					.item(data-value=7): |8.36KHz
+					.item(data-value=8): |9.42KHz
+					.item(data-value=9): |11.18KHz
+					.item(data-value=10): |12.60KHz
+					.item(data-value=11): |13.98KHz
+					.item(data-value=12): |16.88KHz
+					.item(data-value=13): |21.30KHz
+					.item(data-value=14): |24.86KHz
+					.item(data-value=15): |33.14KHz
+					.item(data-value=-1): |No Resample
+	.field
+		label: |Loop
+		.ui.toggle.checkbox
+			input.hidden(type='checkbox' name='loop')
+			label
+
+#modal-autosaveselector.ui.file.maxheight.selectable.modal
+	i.close.icon
+	.header.L: |Open Autosaved MML
+	.content
+		.ui.small.warning.message
+			#caution-autosave-keep
+				i.warning.sign.icon
+				span
+			#caution-autosave-backup
+				i.warning.sign.icon
+				span
+		.scroll-container
+			table.ui.sortable.celled.small.table
+				thead
+					tr
+						th: i.ui.lock.icon
+						th.L: |Slot ID
+						th.L: |Title/Preview
+						th.L: |Updated At
+						th: |&nbsp;
+				tbody
+		#editor-autosave-preview
+	.actions
+		.ui.black.deny.button
+			span.text.L: |Cancel
+		.ui.right.positive.labeled.icon.button
+			span.text.L: |Open
+			i.checkmark.icon
+
+#template-welcome.template
+	.L-select
+		.L-default.markdown
+			include:marked ../markdown/WELCOME.md
+		.L-ja.markdown
+			include:marked ../markdown/WELCOME.ja.md
+
+#modal-about.ui.maxheight.modal
+	//- .header
+	//- 	|About
+	.content
+
+		include _logo
+		br
+		include _modal_about

@@ -1,0 +1,110 @@
+﻿doctype html
+html
+	head
+		meta(charset='utf-8')
+		title= 'MMLxr'
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible' content='IE=edge')
+		meta(name='viewport' content='width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui')
+		meta(name='apple-mobile-web-app-capable' content='yes')
+		meta(name='copyright' content='Mersenne Sister')
+		link(rel='canonical' href=config.urlRoot)
+		link(rel='author' href='https://twitter.com/but80')
+		link(rel='stylesheet' type='text/css' href='components/semantic-ui/semantic.min.css')
+		link(rel='stylesheet' type='text/css' href='index.css')
+		script!= 'var config = ' + JSON.stringify(config) + '; var language = ' + JSON.stringify(language) + ';'
+		script(src='mmlxr.bundle.js')
+		script.
+			window.AudioContext = window.AudioContext || window.webkitAudioContext || window.mozAudioContext;
+			window.indexedDB = window.indexedDB || window.webkitIndexedDB || window.mozIndexedDB || window.msIndexedDB;
+			window.IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction;
+			window.IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange;
+			config.browserSupported = window['AudioContext'] && window['Worker'] && window['indexedDB'];
+			config.browserRecommended = config.browserSupported && $.browser.chrome && !$.browser.mobile;
+			config.importantNotice = config.urlRoot.match(/:\/\/mersenne-sister\.net/);
+	body(spellcheck='false')
+		include _loader
+		
+		#region.flx-col.invisible
+
+			#region-pianoroll-important-notice.flx-auto.flx-row
+				.important-notice
+					| 重要なお知らせ：本ドメインでの提供は2021年8月31日をもって終了します。オートセーブをバックアップし、GitHub上の新ホスト <a href="https://mersenne-sister.github.com/mmlxr" target="_blank">https://mersenne-sister.github.com/mmlxr</a> への移行をお願いします。
+
+			#region-pianoroll-hruler.flx-auto.flx-row
+				.pianoroll-ruler-corner
+				.pianoroll-hruler.flx-row.overflow-hidden
+					- for (var i=0; i<1000; i++) {
+						.bar
+							.number=i
+							.beats
+								.beat
+								.beat
+								.beat
+					-}
+
+			#region-pianoroll.flx-110.flx-row
+				#region-pianoroll-vruler.flx-audo.flx-row.overflow-hidden
+					.pianoroll-vruler.flx-110
+						- for (var i=10; 0<=i; i--) {
+							.pianoroll-vruler-octave
+								.pianoroll-vruler-white
+									.pianoroll-vruler-key
+									.pianoroll-vruler-key.wide
+									.pianoroll-vruler-key.wide
+									.pianoroll-vruler-key
+									.pianoroll-vruler-key
+									.pianoroll-vruler-key.wide
+									.pianoroll-vruler-key: div: ='C'+i
+							.pianoroll-vruler-octave.overlay
+								.pianoroll-vruler-black
+									.pianoroll-vruler-key.bottom
+									.pianoroll-vruler-key.wide
+									.pianoroll-vruler-key.wide
+									.pianoroll-vruler-key.top
+									.pianoroll-vruler-key.bottom
+									.pianoroll-vruler-key.wide
+									.pianoroll-vruler-key.top
+						- }
+				#region-pianoroll-main.flx-110
+				#transport-time= 'STOPPED --:--.--- / --:--'
+				#file-info
+			
+			#region-splitter.uix.vertical.splitter
+			
+			#region-editor.flx-110.flx-row
+				#region-editor-main.flx-220
+					#editor-mml
+				#region-editor-splitter.uix.horizontal.secondary.splitter
+				#region-editor-info.flx-110.flx-col
+					#region-tab-container.flx-110.flx-col
+						.ui.pointing.secondary.menu.flx-auto
+							a.item.active(data-tab='region-pianoroll-track'): |Tracks
+							a.item(data-tab='region-pianoroll-note'): |Notes
+							a.item(data-tab='region-pianoroll-error')
+								i.warning.circle.icon(style={display:'none'})
+								span.text: |Errors
+						div.flx-110.overflow-auto.touch-allow
+							#region-pianoroll-track.ui.bottom.attached.tab.active(data-tab='region-pianoroll-track')
+							#region-pianoroll-note.ui.bottom.attached.tab(data-tab='region-pianoroll-note')
+							#region-pianoroll-error.ui.bottom.attached.tab(data-tab='region-pianoroll-error')
+					#transport-volume-container.flx-auto
+						i#transport-volume-icon.volume.up.icon
+						input#ctrl-volume(type='range' min=0 max=127 step=1 value=100 title='Change volume (F3, F4)')
+						span#transport-volume-display= 100
+					include _menu
+		script(src='https://apis.google.com/js/api.js?onload=onGoogleApiLoad')
+		script(src='https://www.dropbox.com/static/api/2/dropins.js' id='dropboxjs' data-app-key='nikfufykwpq8ng2')
+		script(src='./js/markdown.js')
+
+		include _modal
+		include _modal_about
+
+		noscript(style='position:absolute;top:45%;left:0;width:100%')
+			center
+				h1.accent-colored-text(style='font-size:42px')
+					img(src='images/mmlxr.png' width=80 height=80)
+					|MMLxr
+				div(style='font-size:21px'): |Please enable JavaScript to use this application.
+
+		include _google_analytics

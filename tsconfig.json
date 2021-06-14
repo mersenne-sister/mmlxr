@@ -6,7 +6,7 @@
     "removeComments": false,
     "preserveConstEnums": true,
     "sourceMap": true,
-    "outDir": "build/js-modules",
+    "outDir": "docs/js-modules",
     "rootDir": "src"
   },
   "include": [

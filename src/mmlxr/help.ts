@@ -12,7 +12,7 @@ export class HelpStatic implements LazySingleton {
 
 	private init() {
 		Utils.registerSubscribers({
-			'cmd.help.manual': () => window.open('./manual'),
+			'cmd.help.manual': () => window.open('./manual.html'),
 			'cmd.help.flmml.toc': () => window.open('https://web.archive.org/web/20171224104922/http://flmml.codeplex.com/documentation'),
 			'cmd.help.about': () => $('#modal-about').modal('show')
 		});
