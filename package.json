@@ -49,12 +49,12 @@
     "raw-loader": "^4.0.2",
     "rimraf": "^2.6.3",
     "script-loader": "^0.7.2",
-    "string-replace-loader": "^1.0.0",
-    "ts-loader": "^3.5.0",
+    "string-replace-loader": "^3.1.0",
+    "ts-loader": "^9.4.2",
     "typescript": "^2.9.2",
     "uglify-save-license": "^0.4.1",
-    "webpack": "^3.12.0",
-    "webpack-stream": "^4.0.3"
+    "webpack": "^5.75.0",
+    "webpack-stream": "^7.0.0"
   },
   "dependencies": {
     "binary-search-tree": "~0.2.6",
