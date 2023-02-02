@@ -71,7 +71,7 @@
     "js-cookie": "^2.1.0",
     "js-yaml": "^3.12.1",
     "jstransformer-marked": "^1.0.3",
-    "jszip": "^3.1.5",
+    "jszip": "^3.8.0",
     "lodash": "^4.17.11",
     "marked": "^0.3.19",
     "moment": "^2.23.0",
